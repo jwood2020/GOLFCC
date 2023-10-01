@@ -17,7 +17,11 @@ prepare_react_native_project!
 #   dependencies: {
 #     ...(process.env.NO_FLIPPER ? { 'react-native-flipper': { platforms: { ios: null } } } : {}),
 # ```
+<<<<<<< HEAD
 flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled
+=======
+# flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled
+>>>>>>> 64d4952831eee4047c22d889e4eaa8dabb37e4e4
 
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
@@ -28,6 +32,12 @@ end
 target 'GOLFCC' do
   config = use_native_modules!
 
+<<<<<<< HEAD
+=======
+  use_frameworks! :linkage => :static
+  $RNFirebaseAsStaticFramework = true
+
+>>>>>>> 64d4952831eee4047c22d889e4eaa8dabb37e4e4
   # Flags change depending on the env values.
   flags = get_default_flags()
 
@@ -40,7 +50,11 @@ target 'GOLFCC' do
     #
     # Note that if you have use_frameworks! enabled, Flipper will not work and
     # you should disable the next line.
+<<<<<<< HEAD
     :flipper_configuration => flipper_config,
+=======
+    # :flipper_configuration => flipper_config,
+>>>>>>> 64d4952831eee4047c22d889e4eaa8dabb37e4e4
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
