@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-
-import { signInWithEmailAndPassword   } from '@react-native-firebase/auth';
+import firebase from '@react-native-firebase/app';
+import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
  
 const Login = () => {
@@ -15,9 +15,13 @@ const Login = () => {
   const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
-    /* e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
+  const onFooterLinkPress = () => {
+    navigation.navigate('Signup')
+}
+
+  const handleLogin = () => {
+
+    firebase.app().auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -29,7 +33,7 @@ const Login = () => {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
         alert('Login failed. Please check your credentials.');
-    }); */
+    });
   }
 
   return (
@@ -49,6 +53,9 @@ const Login = () => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+      <View style={styles.footerView}>
+        <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Signup</Text></Text>
+      </View>
     </View>
   );
 };

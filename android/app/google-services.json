@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "122004630049",
+    "firebase_url": "https://golf-app-26711-default-rtdb.firebaseio.com",
+    "project_id": "golf-app-26711",
+    "storage_bucket": "golf-app-26711.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122004630049:android:0a37c58b82c651de619160",
+        "android_client_info": {
+          "package_name": "com.golfcc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrzI-cX2uYGUlJ90PUqYqJea1Oh49LaT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
+apply plugin: 'com.google.gms.google-services' // <- Add this line
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -117,6 +118,14 @@ dependencies {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
+    }
+
+    buildscript {
+        dependencies {
+            // ... other dependencies
+            classpath 'com.google.gms:google-services:4.3.15'
+            // Add me --- /\
+        }
     }
 }
 
