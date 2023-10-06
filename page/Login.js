@@ -1,15 +1,10 @@
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import background from '../backgroundimage.jpeg';
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
-import { useNavigation } from '@react-navigation/native';
- 
+
 const Login = () => {
   const navigation = useNavigation();
   const [email, setUsername] = useState('');
@@ -36,62 +31,95 @@ const Login = () => {
     });
   }
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        onChangeText={(text) => setUsername(text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry={true}
-        onChangeText={(text) => setPassword(text)}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
-      <View style={styles.footerView}>
-        <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Signup</Text></Text>
-      </View>
-    </View>
-  );
-};
-
-export default Login; 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-  },
-  header: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  input: {
-    width: '80%',
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-  },
-  button: {
-    backgroundColor: 'blue',
-    width: '80%',
-    height: 40,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
+  const styles = StyleSheet.create({
+    root: { flex: 1},
+    container: {
+      flex: 1,  
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'black',
+    },
+    text: {
+        textAlign: 'center', 
+        fontSize: 30, 
+        fontWeight: 'bold', 
+        color: 'white',
+        textShadowRadius: 5, 
+        textShadowColor: 'black',
+        marginBottom: 40,
+    },
+    image: { opacity: .4 },
+    button: {
+      width: '80%',
+      height: 50,
+      borderRadius: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom: 10,
+      borderColor: 'gray',
+      borderWidth: 1,
+      borderRadius: 5,
+      marginBottom: 10,
+      paddingHorizontal: 10,
+    },
+    input: {
+      width: '80%',
+      height: 40,
+      borderColor: 'gray',
+      color: 'white',
+      borderWidth: 1,
+      borderRadius: 5,
+      marginBottom: 10,
+      paddingHorizontal: 10,
+      
+    },
+    buttonText: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: 'bold', 
+    },
+    footertext: {
+      textAlign: 'center', 
+      fontWeight: 'bold', 
+      color: 'white',
+      textShadowRadius: 5, 
+      textShadowColor: 'black',
+      marginBottom: 40,
   },
 });
+
+  return (
+    <View style={styles.root}>
+
+            <ImageBackground
+              style={styles.container}
+              imageStyle={styles.image}
+              source={background}
+            >
+                <Text style={styles.text}>Login</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Username"
+                  placeholderTextColor={'white'}
+                  onChangeText={(text) => setUsername(text)}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Password"
+                  placeholderTextColor={'white'}
+                  secureTextEntry={true}
+                  onChangeText={(text) => setPassword(text)}
+                />
+                <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                  <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
+                <View style={styles.footerView}>
+                  <Text style={styles.footertext}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Signup</Text></Text>
+                </View>
+              </ImageBackground>
+            </View> 
+            );
+          }
+
+
+export default Login;

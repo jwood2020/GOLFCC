@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import background from '../backgroundimage.jpeg';
+import React, { useState } from 'react';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 
-export default function RegistrationScreen({navigation}) {
+const RegistrationScreen = () => {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const navigation = useNavigation();
 
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
@@ -29,13 +31,77 @@ export default function RegistrationScreen({navigation}) {
             .catch(error => {console.log(error); alert(error);})
     }
 
-    return (
-        <View style={styles.container}>
-            <Text style={styles.header}>Signup</Text>
+
+  const styles = StyleSheet.create({
+    root: { flex: 1},
+    container: {
+      flex: 1,  
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'black',
+    },
+    text: {
+        textAlign: 'center', 
+        fontSize: 30, 
+        fontWeight: 'bold', 
+        color: 'white',
+        textShadowRadius: 5, 
+        textShadowColor: 'black',
+        marginBottom: 40,
+    },
+    image: { opacity: .4 },
+    button: {
+      width: '80%',
+      height: 50,
+      borderRadius: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom: 10,
+      borderColor: 'gray',
+      borderWidth: 1,
+      borderRadius: 5,
+      marginBottom: 10,
+      paddingHorizontal: 10,
+    },
+    input: {
+      width: '80%',
+      height: 40,
+      borderColor: 'gray',
+      color: 'white',
+      borderWidth: 1,
+      borderRadius: 5,
+      marginBottom: 10,
+      paddingHorizontal: 10,
+      
+    },
+    buttonText: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: 'bold', 
+    },
+    footertext: {
+      textAlign: 'center', 
+      fontWeight: 'bold', 
+      color: 'white',
+      textShadowRadius: 5, 
+      textShadowColor: 'black',
+      marginBottom: 40,
+  },
+});
+
+  return (
+    <View style={styles.root}>
+
+            <ImageBackground
+              style={styles.container}
+              imageStyle={styles.image}
+              source={background}
+            >
+            <Text style={styles.text}>Signup</Text>
             <TextInput
                 style={styles.input}
                 placeholder='Full Name'
-                placeholderTextColor="#aaaaaa"
+                placeholderTextColor={'white'}
                 onChangeText={(text) => setFullName(text)}
                 value={fullName}
                 underlineColorAndroid="transparent"
@@ -44,7 +110,7 @@ export default function RegistrationScreen({navigation}) {
             <TextInput
                 style={styles.input}
                 placeholder='E-mail'
-                placeholderTextColor="#aaaaaa"
+                placeholderTextColor={'white'}
                 onChangeText={(text) => setEmail(text)}
                 value={email}
                 underlineColorAndroid="transparent"
@@ -52,7 +118,7 @@ export default function RegistrationScreen({navigation}) {
             />
             <TextInput
                 style={styles.input}
-                placeholderTextColor="#aaaaaa"
+                placeholderTextColor={'white'}
                 secureTextEntry
                 placeholder='Password'
                 onChangeText={(text) => setPassword(text)}
@@ -62,7 +128,7 @@ export default function RegistrationScreen({navigation}) {
             />
             <TextInput
                 style={styles.input}
-                placeholderTextColor="#aaaaaa"
+                placeholderTextColor={'white'}
                 secureTextEntry
                 placeholder='Confirm Password'
                 onChangeText={(text) => setConfirmPassword(text)}
@@ -73,45 +139,14 @@ export default function RegistrationScreen({navigation}) {
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => onRegisterPress()}>
-                <Text style={styles.buttonTitle}>Create account</Text>
+                <Text style={styles.buttonText}>Create account</Text>
             </TouchableOpacity>
             <View style={styles.footerView}>
-                <Text style={styles.footerText}>Already got an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
+                <Text style={styles.footertext}>Already got an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
             </View>
-        </View>
-    )
-};
+        </ImageBackground>
+    </View>
+    );
+}
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#f0f0f0',
-    },
-    header: {
-      fontSize: 24,
-      marginBottom: 20,
-    },
-    input: {
-      width: '80%',
-      height: 40,
-      borderColor: 'gray',
-      borderWidth: 1,
-      borderRadius: 5,
-      marginBottom: 10,
-      paddingHorizontal: 10,
-    },
-    button: {
-      backgroundColor: 'blue',
-      width: '80%',
-      height: 40,
-      borderRadius: 5,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    buttonText: {
-      color: 'white',
-      fontSize: 16,
-    },
-});
+export default RegistrationScreen;
