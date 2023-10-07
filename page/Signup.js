@@ -30,8 +30,7 @@ const RegistrationScreen = () => {
 
             .catch(error => {console.log(error); alert(error);})
     }
-
-
+    
   const styles = StyleSheet.create({
     root: { flex: 1},
     container: {
@@ -40,14 +39,29 @@ const RegistrationScreen = () => {
       alignItems: 'center',
       backgroundColor: 'black',
     },
+    heading: {
+      textAlign: 'center', 
+      fontSize: 30, 
+      fontWeight: 'bold', 
+      color: 'white',
+      textShadowRadius: 5, 
+      textShadowColor: 'black',
+      marginBottom: 10,
+    },
+    quotetext: {
+      textAlign: 'center', 
+      fontWeight: 'bold', 
+      color: 'white',
+      textShadowRadius: 5, 
+      textShadowColor: 'black',
+      marginBottom: 20,
+    },
     text: {
-        textAlign: 'center', 
-        fontSize: 30, 
-        fontWeight: 'bold', 
-        color: 'white',
-        textShadowRadius: 5, 
-        textShadowColor: 'black',
-        marginBottom: 40,
+      textAlign: 'center', 
+      fontWeight: 'bold', 
+      color: 'white',
+      textShadowRadius: 5, 
+      textShadowColor: 'black',
     },
     image: { opacity: .4 },
     button: {
@@ -97,7 +111,9 @@ const RegistrationScreen = () => {
               imageStyle={styles.image}
               source={background}
             >
-            <Text style={styles.text}>Signup</Text>
+            <Text style={styles.heading}>GOLFCC</Text>
+            <Text style={styles.text}>“Success in this game depends less on strength of body than strength of mind and character.”</Text>
+            <Text style={styles.quotetext}>-Arnold Palmer</Text>
             <TextInput
                 style={styles.input}
                 placeholder='Full Name'

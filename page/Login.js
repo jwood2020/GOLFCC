@@ -14,6 +14,11 @@ const Login = () => {
     navigation.navigate('Signup')
 }
 
+  const handleBack = () => {
+    // Navigate to the AnotherScreen
+    navigation.navigate('Home');
+  };
+
   const handleLogin = () => {
 
     firebase.app().auth().signInWithEmailAndPassword(email, password)
@@ -32,21 +37,23 @@ const Login = () => {
   }
 
   const styles = StyleSheet.create({
-    root: { flex: 1},
+    root: { 
+      flex: 1,
+    },
     container: {
       flex: 1,  
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: 'black',
     },
-    text: {
-        textAlign: 'center', 
-        fontSize: 30, 
-        fontWeight: 'bold', 
-        color: 'white',
-        textShadowRadius: 5, 
-        textShadowColor: 'black',
-        marginBottom: 40,
+    heading: {
+      textAlign: 'center', 
+      fontSize: 30, 
+      fontWeight: 'bold', 
+      color: 'white',
+      textShadowRadius: 5, 
+      textShadowColor: 'black',
+      marginBottom: 10,
     },
     image: { opacity: .4 },
     button: {
@@ -67,36 +74,46 @@ const Login = () => {
       height: 40,
       borderColor: 'gray',
       color: 'white',
+      textAlignVertical: 'center',
       borderWidth: 1,
       borderRadius: 5,
       marginBottom: 10,
       paddingHorizontal: 10,
-      
     },
     buttonText: {
       color: 'white',
       fontSize: 16,
       fontWeight: 'bold', 
     },
-    footertext: {
+    text: {
       textAlign: 'center', 
       fontWeight: 'bold', 
       color: 'white',
       textShadowRadius: 5, 
       textShadowColor: 'black',
-      marginBottom: 40,
-  },
+    },
+    quotetext: {
+      textAlign: 'center', 
+      fontWeight: 'bold', 
+      color: 'white',
+      textShadowRadius: 5, 
+      textShadowColor: 'black',
+      marginBottom: 20,
+
+    }
 });
 
   return (
     <View style={styles.root}>
 
-            <ImageBackground
+        <ImageBackground
               style={styles.container}
               imageStyle={styles.image}
               source={background}
             >
-                <Text style={styles.text}>Login</Text>
+                <Text style={styles.heading}>GOLFCC</Text>
+                <Text style={styles.text}>“Success in this game depends less on strength of body than strength of mind and character.”</Text>
+                <Text style={styles.quotetext}>-Arnold Palmer</Text>
                 <TextInput
                   style={styles.input}
                   placeholder="Username"
@@ -114,12 +131,12 @@ const Login = () => {
                   <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
-                  <Text style={styles.footertext}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Signup</Text></Text>
+                  <Text style={styles.text}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Signup</Text></Text>
                 </View>
-              </ImageBackground>
-            </View> 
-            );
-          }
+        </ImageBackground>
+      </View> 
+    );
+  }
 
 
 export default Login;
