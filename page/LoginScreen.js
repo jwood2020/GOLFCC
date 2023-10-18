@@ -1,31 +1,25 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import background from '../backgroundimage.jpeg';
 import React, { useState } from 'react';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 
-const Login = () => {
+const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const onFooterLinkPress = () => {
     navigation.navigate('Signup')
-}
-
-  const handleBack = () => {
-    // Navigate to the AnotherScreen
-    navigation.navigate('Home');
-  };
+  }
 
   const handleLogin = () => {
-
     firebase.app().auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigation.navigate('Home');
+        navigation.navigate('Main');
         console.log(user);
     })
     .catch((error) => {
@@ -35,73 +29,6 @@ const Login = () => {
         alert('Login failed. Please check your credentials.');
     });
   }
-
-  const styles = StyleSheet.create({
-    root: { 
-      flex: 1,
-    },
-    container: {
-      flex: 1,  
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'black',
-    },
-    heading: {
-      textAlign: 'center', 
-      fontSize: 30, 
-      fontWeight: 'bold', 
-      color: 'white',
-      textShadowRadius: 5, 
-      textShadowColor: 'black',
-      marginBottom: 10,
-    },
-    image: { opacity: .4 },
-    button: {
-      width: '80%',
-      height: 50,
-      borderRadius: 5,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginBottom: 10,
-      borderColor: 'gray',
-      borderWidth: 1,
-      borderRadius: 5,
-      marginBottom: 10,
-      paddingHorizontal: 10,
-    },
-    input: {
-      width: '80%',
-      height: 40,
-      borderColor: 'gray',
-      color: 'white',
-      textAlignVertical: 'center',
-      borderWidth: 1,
-      borderRadius: 5,
-      marginBottom: 10,
-      paddingHorizontal: 10,
-    },
-    buttonText: {
-      color: 'white',
-      fontSize: 16,
-      fontWeight: 'bold', 
-    },
-    text: {
-      textAlign: 'center', 
-      fontWeight: 'bold', 
-      color: 'white',
-      textShadowRadius: 5, 
-      textShadowColor: 'black',
-    },
-    quotetext: {
-      textAlign: 'center', 
-      fontWeight: 'bold', 
-      color: 'white',
-      textShadowRadius: 5, 
-      textShadowColor: 'black',
-      marginBottom: 20,
-
-    }
-});
 
   return (
     <View style={styles.root}>
@@ -116,7 +43,7 @@ const Login = () => {
                 <Text style={styles.quotetext}>-Arnold Palmer</Text>
                 <TextInput
                   style={styles.input}
-                  placeholder="Username"
+                  placeholder="Email"
                   placeholderTextColor={'white'}
                   onChangeText={(text) => setUsername(text)}
                 />
@@ -138,5 +65,70 @@ const Login = () => {
     );
   }
 
+export default LoginScreen;
 
-export default Login;
+const styles = StyleSheet.create({
+  root: { 
+    flex: 1,
+  },
+  container: {
+    flex: 1,  
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
+  },
+  heading: {
+    textAlign: 'center', 
+    fontSize: 30, 
+    fontWeight: 'bold', 
+    color: 'white',
+    textShadowRadius: 5, 
+    textShadowColor: 'black',
+    marginBottom: 10,
+  },
+  image: { opacity: .4 },
+  button: {
+    width: '80%',
+    height: 50,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+  input: {
+    width: '80%',
+    height: 40,
+    borderColor: 'gray',
+    color: 'white',
+    textAlignVertical: 'center',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold', 
+  },
+  text: {
+    textAlign: 'center', 
+    fontWeight: 'bold', 
+    color: 'white',
+    textShadowRadius: 5, 
+    textShadowColor: 'black',
+  },
+  quotetext: {
+    textAlign: 'center', 
+    fontWeight: 'bold', 
+    color: 'white',
+    textShadowRadius: 5, 
+    textShadowColor: 'black',
+    marginBottom: 20,
+  }
+});
