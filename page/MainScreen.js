@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import background from './backgroundimage.jpeg';
+import background from '../backgroundimage.jpeg';
 
-function HomeScreen() {
+function MainScreen() {
   const navigation = useNavigation();
 
   const handleLogin = () => {
@@ -77,7 +77,7 @@ function HomeScreen() {
               imageStyle={styles.image}
               source={background}
             >
-              <Text style={styles.heading}>GOLFCC</Text>
+              <Text style={styles.heading}>TEST</Text>
               <Text style={styles.text}>“Success in this game depends less on strength of body than strength of mind and character.”</Text>
               <Text style={styles.quotetext}>-Arnold Palmer</Text>
               <TouchableOpacity style={styles.button} onPress={handleLogin}>
@@ -92,4 +92,4 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen;
+export default MainScreen;

@@ -490,7 +490,8 @@ PODS:
     - Firebase/Database (= 10.15.0)
     - React-Core
     - RNFBApp
-  - RNGestureHandler (2.13.1):
+  - RNGestureHandler (2.13.3):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - RNReanimated (3.5.4):
     - DoubleConversion
@@ -524,6 +525,8 @@ PODS:
   - RNScreens (3.25.0):
     - React-Core
     - React-RCTImage
+  - RNSVG (13.14.0):
+    - React-Core
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
@@ -578,6 +581,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -696,6 +700,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -759,9 +765,10 @@ SPEC CHECKSUMS:
   RNFBApp: 082df9f8ffba99f23f7aee3ecb64df703e7e1adb
   RNFBAuth: b055663339aef8ce9d63cd5d03e2ea5360a3aca2
   RNFBDatabase: d5b6d42a51070996e38f37de10950e9284f3469b
-  RNGestureHandler: 38aa38413896620338948fbb5c90579a7b1c3fde
+  RNGestureHandler: 48e4a6a515fe4a47e49229ca27a78074004fd59e
   RNReanimated: ab2e96c6d5591c3dfbb38a464f54c8d17fb34a87
   RNScreens: 85d3880b52d34db7b8eeebe2f1a0e807c05e69fa
+  RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 86fed2e4d425ee4c6eab3813ba1791101ee153c6
 

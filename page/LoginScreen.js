@@ -5,19 +5,18 @@ import React, { useState } from 'react';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 
-const Login = () => {
+const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const onFooterLinkPress = () => {
     navigation.navigate('Signup')
-}
+  }
 
-  const handleBack = () => {
-    // Navigate to the AnotherScreen
-    navigation.navigate('Home');
-  };
+  const onSuccessLogin = () => {
+      navigation.navigate('Main');
+  }
 
   const handleLogin = () => {
 
@@ -25,8 +24,8 @@ const Login = () => {
     .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigation.navigate('Home');
         console.log(user);
+        onSuccessLogin();
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -139,4 +138,4 @@ const Login = () => {
   }
 
 
-export default Login;
+export default LoginScreen;

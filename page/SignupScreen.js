@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 
-const RegistrationScreen = () => {
+const SignupScreen = () => {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -104,7 +104,7 @@ const RegistrationScreen = () => {
     );
 }
 
-export default RegistrationScreen;
+export default SignupScreen;
 
 const styles = StyleSheet.create({
   root: { 
