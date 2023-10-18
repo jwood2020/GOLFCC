@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 
-const SignupScreen = () => {
+const RegistrationScreen = () => {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -26,7 +26,7 @@ const SignupScreen = () => {
         firebase.app().auth().createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigation.navigate('Main');
+                navigation.navigate('Home');
             })
 
             .catch(error => {console.log(error); alert(error);})
@@ -84,7 +84,7 @@ const SignupScreen = () => {
                     style={styles.input}
                     placeholderTextColor={'white'}
                     secureTextEntry
-                    placeholder='Course Code'
+                    placeholder='Golf Course Code'
                     onChangeText={(text) => setCourseCode(text)}
                     value={courseCode}
                     underlineColorAndroid="transparent"
@@ -104,7 +104,7 @@ const SignupScreen = () => {
     );
 }
 
-export default SignupScreen;
+export default RegistrationScreen;
 
 const styles = StyleSheet.create({
   root: { 
