@@ -19,8 +19,8 @@ const SignupScreen = () => {
     }
 
     const onSuccessSignup = () => {
-      navigation.navigate('MainContainer');
-  }
+        navigation.navigate('MainContainer');
+    }
 
     const onSignupPress = () => {
         if (password !== confirmPassword) {
