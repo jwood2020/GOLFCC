@@ -4,6 +4,7 @@ import background from '../backgroundimage.jpeg';
 import React, { useState } from 'react';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
+import { ref, push, getDatabase } from '@react-native-firebase/database';
 
 const SignupScreen = () => {
     const [fullName, setFullName] = useState('')
@@ -17,7 +18,11 @@ const SignupScreen = () => {
         navigation.navigate('Login')
     }
 
-    const onRegisterPress = () => {
+    const onSuccessSignup = () => {
+      navigation.navigate('MainContainer');
+  }
+
+    const onSignupPress = () => {
         if (password !== confirmPassword) {
             alert("Passwords don't match.")
             return
@@ -25,11 +30,27 @@ const SignupScreen = () => {
         
         firebase.app().auth().createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                const user = userCredential.user;
-                navigation.navigate('Home');
-            })
 
-            .catch(error => {console.log(error); alert(error);})
+                const db = getDatabase();
+
+                var id = push(ref(db, "/Users"), {
+                    Name: fullName,
+                    Email: email,
+                });
+
+                var key = id.key;
+
+                push(ref(db, "/UserCourses"), {
+                    userID: key,
+                    CourseCode: courseCode,
+                });
+
+                onSuccessSignup();
+            })
+            .catch(error => {
+                console.log(error);
+                alert(error);
+            })
     }
 
     return (
@@ -92,7 +113,7 @@ const SignupScreen = () => {
 
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => onRegisterPress()}>
+                    onPress={() => onSignupPress()}>
                     <Text style={styles.buttonText}>Create account</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
