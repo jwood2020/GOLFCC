@@ -83,7 +83,6 @@ const SignupScreen = () => {
                 <TextInput
                     style={styles.input}
                     placeholderTextColor={'white'}
-                    secureTextEntry
                     placeholder='Golf Course Code'
                     onChangeText={(text) => setCourseCode(text)}
                     value={courseCode}

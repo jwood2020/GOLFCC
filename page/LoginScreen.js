@@ -15,7 +15,7 @@ const LoginScreen = () => {
   }
 
   const onSuccessLogin = () => {
-      navigation.navigate('Main');
+      navigation.navigate('MainContainer');
   }
 
   const handleLogin = () => {
@@ -115,7 +115,7 @@ const LoginScreen = () => {
                 <Text style={styles.quotetext}>-Arnold Palmer</Text>
                 <TextInput
                   style={styles.input}
-                  placeholder="Username"
+                  placeholder="Email"
                   placeholderTextColor={'white'}
                   onChangeText={(text) => setUsername(text)}
                 />
