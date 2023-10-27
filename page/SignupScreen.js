@@ -2,9 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } 
 import { useNavigation } from '@react-navigation/native';
 import background from '../backgroundimage.jpeg';
 import React, { useState } from 'react';
-import firebase from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
-import { ref, push, getDatabase } from '@react-native-firebase/database';
+import AddUser from "../firebase/Users"
 
 const SignupScreen = () => {
     const [fullName, setFullName] = useState('')
@@ -12,45 +10,33 @@ const SignupScreen = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [courseCode, setCourseCode] = useState('')
+
     const navigation = useNavigation();
 
+    /* The navigation must be separated from view code,
+       so we put it here. */
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
     }
 
-    const onSuccessSignup = () => {
-        navigation.navigate('MainContainer');
-    }
-
-    const onSignupPress = () => {
+    /* Asynchronous function so that we can force the function to 
+       wait for AddUser to run and return the correct value. 
+       Without making the function asynchronous and the using await, 
+       AddUser will run asynchronously and the if statement will 
+       always evaluate to True. */
+    async function onSignupPress() {
         if (password !== confirmPassword) {
             alert("Passwords don't match.")
             return
         }
-        
-        firebase.app().auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
 
-                const db = getDatabase();
+        /* Add a user, if user enters faulty data then do not take
+           them to main screen. */
+        if (await AddUser(email, password, courseCode, fullName)) {
+            navigation.navigate('MainContainer')
+        }
 
-                var id = push(ref(db, "/Users"), {
-                    Name: fullName,
-                    Email: email,
-                });
-
-                var key = id.key;
-
-                push(ref(db, "/UserCourses"), {
-                    userID: key,
-                    CourseCode: courseCode,
-                });
-
-                onSuccessSignup();
-            })
-            .catch(error => {
-                console.log(error);
-                alert(error);
-            })
+        return;
     }
 
     return (
