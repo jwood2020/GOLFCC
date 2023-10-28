@@ -1,8 +1,9 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import background from '../backgroundimage.jpeg';
 import React, { useState } from 'react';
-import AddUser from "../firebase/Users"
+import AddUser from "../firebase/Users";
+import styles from './HomeLoginSignupStyling';
 
 const SignupScreen = () => {
     const [fullName, setFullName] = useState('')
@@ -111,89 +112,3 @@ const SignupScreen = () => {
 }
 
 export default SignupScreen;
-
-const styles = StyleSheet.create({
-  root: { 
-      flex: 1
-  },
-
-  container: {
-      flex: 1,  
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'black',
-  },
-
-  text: {
-    textAlign: 'center', 
-    fontWeight: 'bold', 
-    color: 'white',
-    textShadowRadius: 5, 
-    textShadowColor: 'black',
-  },
-
-  image: { 
-      opacity: .4 
-  },
-
-  button: {
-    width: '80%',
-    height: 50,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 10,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-  },
-  
-  input: {
-    width: '80%',
-    height: 40,
-    borderColor: 'gray',
-    color: 'white',
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    
-  },
-
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold', 
-  },
-
-  footertext: {
-    textAlign: 'center', 
-    fontWeight: 'bold', 
-    color: 'white',
-    textShadowRadius: 5, 
-    textShadowColor: 'black',
-    marginBottom: 40,
-  },
-
-  heading: {
-    textAlign: 'center', 
-    fontSize: 30, 
-    fontWeight: 'bold', 
-    color: 'white',
-    textShadowRadius: 5, 
-    textShadowColor: 'black',
-    marginBottom: 10,
-  },
-
-  quotetext: {
-    textAlign: 'center', 
-    fontWeight: 'bold', 
-    color: 'white',
-    textShadowRadius: 5, 
-    textShadowColor: 'black',
-    marginBottom: 20,
-  },
-  
-});
