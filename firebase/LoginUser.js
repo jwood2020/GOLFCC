@@ -29,12 +29,6 @@ async function LoginUser(email, password) {
             return 0;
         });
 
-    firebase.app().auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .catch((error) => {
-            console.log(error);
-            alert(error);
-        });
-
     return success;
 
 }

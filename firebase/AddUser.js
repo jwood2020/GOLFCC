@@ -47,12 +47,6 @@ async function AddUser(email, password, courseCode, fullName) {
             return 0;
         });
 
-    firebase.app().auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .catch((error) => {
-            console.log(error);
-            alert(error);
-        });
-
     return success;
 
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const HomeScreen = ({navigation}) => {
+const MainScreen = ({navigation}) => {
     return(
         <View style={styles.container}>
-        <Text>Home Screen</Text>
+        <Text>Main Screen</Text>
         <Button
             title="Click Me"
             onPress={() => alert('Button Clicked!')}
@@ -13,7 +13,7 @@ const HomeScreen = ({navigation}) => {
     );
 };
 
-export default HomeScreen
+export default MainScreen
 
 const styles = StyleSheet.create({
     container: {

@@ -3,12 +3,12 @@ import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import background from '../backgroundimage.jpeg';
 import styles from './HomeLoginSignupStyling';
-import CheckPersistence from '../firebase/CheckPersistence';
+import CheckLoggedIn from '../firebase/CheckLoggedIn';
 
 function HomeScreen() {
   const navigation = useNavigation();
 
-  if (CheckPersistence()) {
+  if (CheckLoggedIn()) {
     navigation.navigate('MainContainer');
   }
 
