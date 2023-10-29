@@ -13,6 +13,9 @@ async function AddUser(email, password, courseCode, fullName) {
     const success = await firebase.app().auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
 
+            const user = userCredential.user;
+            console.log(user);
+
             const db = getDatabase();
 
             /* Create the User record in the database. */
@@ -42,6 +45,12 @@ async function AddUser(email, password, courseCode, fullName) {
 
             /* Return that firebase errored */
             return 0;
+        });
+
+    firebase.app().auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .catch((error) => {
+            console.log(error);
+            alert(error);
         });
 
     return success;

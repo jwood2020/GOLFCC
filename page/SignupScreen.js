@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-
 import { useNavigation } from '@react-navigation/native';
 import background from '../backgroundimage.jpeg';
 import React, { useState } from 'react';
-import AddUser from "../firebase/Users";
+import AddUser from "../firebase/AddUser";
 import styles from './HomeLoginSignupStyling';
 
 const SignupScreen = () => {

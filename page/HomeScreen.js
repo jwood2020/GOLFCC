@@ -3,9 +3,14 @@ import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import background from '../backgroundimage.jpeg';
 import styles from './HomeLoginSignupStyling';
+import CheckPersistence from '../firebase/CheckPersistence';
 
 function HomeScreen() {
   const navigation = useNavigation();
+
+  if (CheckPersistence()) {
+    navigation.navigate('Main');
+  }
 
   const handleLogin = () => {
     // Navigate to the AnotherScreen

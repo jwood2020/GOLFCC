@@ -2,8 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-
 import { useNavigation } from '@react-navigation/native';
 import background from '../backgroundimage.jpeg';
 import React, { useState } from 'react';
-import firebase from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
+import LoginUser from '../firebase/LoginUser';
 import styles from './HomeLoginSignupStyling';
 
 const LoginScreen = () => {
@@ -15,25 +14,10 @@ const LoginScreen = () => {
     navigation.navigate('Signup')
   }
 
-  const onSuccessLogin = () => {
-      navigation.navigate('MainContainer');
-  }
-
-  const handleLogin = () => {
-
-    firebase.app().auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        onSuccessLogin();
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        alert('Login failed. Please check your credentials.');
-    });
+  async function handleLogin() {
+    if (await LoginUser(email, password)) {
+        navigation.navigate('MainContainer')
+    }
   }
 
   return (
