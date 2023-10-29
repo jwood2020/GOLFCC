@@ -9,7 +9,7 @@ function HomeScreen() {
   const navigation = useNavigation();
 
   if (CheckPersistence()) {
-    navigation.navigate('Main');
+    navigation.navigate('MainContainer');
   }
 
   const handleLogin = () => {
