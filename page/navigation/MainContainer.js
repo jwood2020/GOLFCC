@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icons from 'react-native-ionicons';
+
 
 // Screens
 import MainScreen from './screens/MainScreen';
@@ -17,7 +17,6 @@ const teetimeNames = "Tee Times";
 const settingsName = "Settings";
 const ghinHandicapName = "Ghin";
 
-
 const Tab = createBottomTabNavigator();
 
 function MainContainer() {
@@ -25,6 +24,8 @@ function MainContainer() {
       <Tab.Navigator
         initialRouteName={mainName}
         screenOptions={({ route }) => ({
+          headerShown: false,
+          
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             let rn = route.name;
@@ -46,15 +47,14 @@ function MainContainer() {
             }
 
             // You can return any component that you like here!
-            return <Icons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions ={{
           activeTintColor: 'grey',
           inactiveTintColor: 'black',
-          labelStyle: { paddingBottom: 10, fontSize: 10 },
-          style: { padding: 10, height: 70}
-        }}>
+          labelStyle: { paddingBottom: 18, fontSize: 12 },
+        }}
+        >
 
         <Tab.Screen name={teetimeNames} component={TeeTimes} />
         <Tab.Screen name={menuName} component={Menu} />

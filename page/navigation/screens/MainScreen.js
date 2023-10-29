@@ -1,12 +1,24 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-export default function MainScreen({navigation}) {
+const HomeScreen = ({navigation}) => {
     return(
-        <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text 
-                onPress= {() => alert('This is MainScreen')}
-                style={{ fontSize: 26, fontWeight: 'bold'}}>MainScreen</Text>
-        </View>
+        <View style={styles.container}>
+        <Text>Home Screen</Text>
+        <Button
+            title="Click Me"
+            onPress={() => alert('Button Clicked!')}
+        />
+    </View>
     );
-}
+};
+
+export default HomeScreen
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+})
