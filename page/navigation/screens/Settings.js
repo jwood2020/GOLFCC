@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
 import LogoutUser from '../../../firebase/LogoutUser';
+import background from '/Users/taycj2002/Documents/GitHub/GOLFCC/backgroundimage.jpeg';
+import CheckLoggedIn from '../../../firebase/CheckLoggedIn';
+
 
 export default function Settings({navigation}) {
+
+    const user = CheckLoggedIn();
 
     function handleLogout() {
         LogoutUser();
@@ -10,14 +15,66 @@ export default function Settings({navigation}) {
     }
 
     return(
-        <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text 
-                onPress= {() => navigation.navigate('Settings')}
-                style={{ fontSize: 26, fontWeight: 'bold'}}>Settings</Text>
+        <View style={styles.viewContainer}>
+            
+            <ImageBackground
+              style={styles.backgroundContainer}
+              imageStyle={styles.image}
+              source={background}
+            >
+            <View style={styles.container}>
+                <Text style={styles.headingText}>Fox Run Golf Club</Text>
+                <View style={styles.rightAlignText}>
+                    <Text style={styles.logoutText} onPress= {() => handleLogout()}>Log Out</Text> 
+                </View>
+                
+            </View>
 
-            <Text 
-                onPress= {() => handleLogout()}
-                style={{ fontSize: 15 }}>Log Out</Text>
+            <View style={styles.divider} />
+
+            <Text>Name: {user.name}</Text>
+            
+            </ImageBackground>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    viewContainer: {
+        flex: 1,
+    },
+    backgroundContainer: {
+        flex: 1,  
+        paddingHorizontal: 20, 
+        paddingVertical: 50,
+        backgroundColor: 'black',
+    },
+    image: { 
+        opacity: .4 
+    },
+    logoutText: {
+        color: 'white',
+    },
+    headingText: {
+        fontSize: 26,
+        paddingLeft: 10,
+        color: 'white',
+        fontWeight: 'bold',
+    },
+    bodyText: {
+        color: 'white',
+        paddingLeft: 10,
+        paddingTop: 10
+    },
+    divider: {
+        borderBottomWidth: 1,
+        borderColor: 'gray', 
+        marginVertical: 10,
+      },
+})
