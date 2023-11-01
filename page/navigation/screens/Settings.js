@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
 import LogoutUser from '../../../firebase/LogoutUser';
-import background from '/Users/taycj2002/Documents/GitHub/GOLFCC/backgroundimage.jpeg';
+import background from '../../../backgroundimage.jpeg';
 import CheckLoggedIn from '../../../firebase/CheckLoggedIn';
 
 

@@ -2,8 +2,7 @@ import React, { useState} from "react";
 import { View, Text, StyleSheet, Button, Image, Span, ImageBackground } from 'react-native';
 import { SelectList } from "react-native-dropdown-select-list";
 import RNPickerSelect from 'react-native-picker-select';
-
-
+import background from '../../../backgroundimage.jpeg';
 
 const Menu = () => {
 
@@ -53,70 +52,76 @@ const Menu = () => {
       const [quantity, setQuantity] = useState(1);
       const [price, setPrice] = useState(4 );
 
+      // The quantity and the price was not synced together so we had to write the code like this to get it to work.
       // Increments the quantity by 1 when the button is pressed.
       function handleIncrement() {
+        setPrice((quantity + 1) *  4);
         setQuantity(quantity + 1);
-        handlePrice()
       };
     
       // Decrement the quantity by 1 when the button is pressed.
       function handleDecrement() {
         if (quantity > 0) {
+          setPrice((quantity - 1) *  4);
           setQuantity(quantity - 1);
-          handlePrice()
         }
-      }
-
-      // TODO 
-      // Handles the price based off of what the quantity. Code isn't in sync with the view. View will always display the previous value of product.
-      function handlePrice() {
-        setPrice(quantity *  4)
       }
 
       return (
         <View>
-          <Text style={styles.heading}>Busch Light:</Text>
+          <Text style={styles.productHeading}>Busch Light:</Text>
           <Image style={styles.image} source={require('./photos/buschlightcan.webp')} />
           <Text style={styles.subheading}>Description:</Text>
           <Text style={styles.text}>Busch Light Beer is a light bodied American beer that delivers fewer calories and a classic taste.</Text>
           <View style={styles.container}>
             <View style={styles.buttonBox}>
-              <Button onPress={handleDecrement} title='-' />
+              <Button color="white" onPress={handleDecrement} title='-' />
             </View>
             <View style={styles.view1}>
-              <Text> {quantity.toString()} </Text>
+              <Text style={styles.text}> {quantity.toString()} </Text>
             </View>
             <View style={styles.buttonBox}>
-              <Button onPress={handleIncrement} title='+' />
+              <Button color="white" onPress={handleIncrement} title='+' />
             </View>
             <View style={styles.addToOrderButton}>
-              <Button title="Add to Order" />
+              <Button color="white" title="Add to Order" />
             </View>
           </View>
-          <Text>Price: ${price}</Text>
+          <Text style={styles.text}>Price: ${price}</Text>
         </View>
       )
     }
 
     return(
-      <View style={{paddingHorizontal: 20, paddingVertical:50, flex:1}}>
-          <Text style={styles.heading}>Menu:</Text>
-          <SelectList 
-            data={data} 
-            setSelected={setSelected} 
-            dropdownItemStyles={{marginHorizontal: 10}}
-            dropdownTextStyles={{color:'black'}}
-            placeholder="Select Item"
-            searchPlaceholder="Search"
-            maxHeight={200}
-            onValueChange={handleItemChange}
-            items={data}
-          />
-          <View style={styles.divider} />
+      <View style={styles.viewContainer}>
+        <ImageBackground
+              style={styles.backgroundContainer}
+              imageStyle={styles.backgroundImage}
+              source={background}
+            >
+        
+          <Text style={styles.heading}>Fox Run Golf Club</Text>
+            
+            <View style={styles.divider} />
 
-          {selected && (
-            <Text>{contentToShow[selected]}</Text>
-          )}  
+            <SelectList 
+              style={styles.textInput}
+              data={data} 
+              setSelected={setSelected} 
+              dropdownItemStyles={{marginHorizontal: 10}}
+              dropdownTextStyles={{color:'white'}}
+              borderColor={{color:'white'}}
+              placeholder="Select Item"
+              searchPlaceholder="Search"
+              maxHeight={200}
+              onValueChange={handleItemChange}
+              items={data}
+            />
+
+            {selected && (
+              <Text>{contentToShow[selected]}</Text>
+            )}  
+        </ImageBackground>
       </View>
     )
 }
@@ -125,49 +130,75 @@ export default Menu;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  viewContainer: {
+    flex: 1,
+  },
+  backgroundImage: {
+    opacity: 0.4,
+  },
+  backgroundContainer: {
+    flex: 1,  
+    paddingHorizontal: 20, 
+    paddingVertical: 50,
+    backgroundColor: 'black',
   },
   view1: {
     padding: 10,
     margin: 5,
+
   },
   heading: {
-    marginVertical: 10,
-    fontSize: 24,
+    fontSize: 26,
+    paddingLeft: 10,
+    color: 'white',
     fontWeight: 'bold',
+  },
+  productHeading: {
+    fontSize: 26,
+    paddingLeft: 10,
+    color: 'white',
+    fontWeight: 'bold',
+    paddingTop: 10,
   },
   subheading: {
     fontWeight: 'bold',
     marginVertical: 5,
+    color: 'white',
   },
   text: {
     marginVertical: 5,
+    color: 'white',
   },
   buttonBox: {
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'white',
     borderRadius: 5, 
     padding: 1, 
     width: 30,
   },
   addToOrderButton: {
     borderWidth: 1, 
-    borderColor: 'black',
+    borderColor: 'white',
     borderRadius: 5,
     padding: 1, 
     marginLeft: 'auto',
+    color: 'white',
   },  
   divider: {
     borderBottomWidth: 1,
     borderColor: 'gray', 
-    marginVertical: 15,
+    marginVertical: 10,
   },
   image: {
     width: 200, 
     height: 200, 
     resizeMode: 'contain', 
   },
-
+  textInput: {
+    color: 'white',
+    placeholderTextColor: 'white', // Placeholder text color
+  },
 });
