@@ -2,12 +2,14 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
 import LogoutUser from '../../../firebase/LogoutUser';
 import background from '../../../backgroundimage.jpeg';
-import CheckLoggedIn from '../../../firebase/CheckLoggedIn';
-import auth from '@react-native-firebase/auth';
+import ReturnUser from '../../../firebase/ReturnUser';
+
 
 export default function Settings({navigation}) {
 
-    const user = CheckLoggedIn();
+    const user_info = ReturnUser();
+    const user = user_info[0];
+    const email = user_info[1];
 
     function handleLogout() {
         LogoutUser();
