@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
 import LogoutUser from '../../../firebase/LogoutUser';
 import background from '../../../backgroundimage.jpeg';
 import CheckLoggedIn from '../../../firebase/CheckLoggedIn';
-
+import auth from '@react-native-firebase/auth';
 
 export default function Settings({navigation}) {
 
@@ -32,7 +32,8 @@ export default function Settings({navigation}) {
 
             <View style={styles.divider} />
 
-            <Text>Name: {user.name}</Text>
+            <Text style={styles.text}>{user.UserCurrent}</Text>
+            <Text style={styles.text}>Email:</Text>
             
             </ImageBackground>
         </View>
@@ -77,4 +78,8 @@ const styles = StyleSheet.create({
         borderColor: 'gray', 
         marginVertical: 10,
       },
+    text: {
+        color: 'white',
+        marginVertical: 5,
+    }
 })

@@ -25,7 +25,7 @@ const Menu = () => {
       {key:"13",value:"Soda"},
       {key:"14",value:"Energy Drinks"},
       {key:"15",value:"Powerade"},
-      {key:"16",value:"Highnoon"},
+      {key:"16",value:"High Noon"},
       {key:"17",value:"Miller Lite"},
       {key:"18",value:"Twisted Tea"},
       {key:"19",value:"Sandwhiches"},
@@ -39,6 +39,24 @@ const Menu = () => {
       1: item1(), 
       2: 'Content for Item 2',
       3: 'Content for Item 3',
+      4: item2(),
+      5: 'Content for Item 5',
+      6: 'Content for Item 6',
+      7: 'Content for Item 7',
+      8: 'Content for Item 8',
+      9: 'Content for Item 9',
+      10: 'Content for Item 10',
+      11: 'Content for Item 11',
+      12: 'Content for Item 12',
+      13: 'Content for Item 13',
+      14: 'Content for Item 14',
+      15: 'Content for Item 15',
+      16: item3(),
+      17: 'Content for Item 17',
+      18: 'Content for Item 18',
+      19: 'Content for Item 19',
+      20: 'Content for Item 20',
+
     };
 
     //Counts the quantity of the product the users selects.
@@ -92,6 +110,98 @@ const Menu = () => {
       )
     }
 
+    // Michelob Ultra product display.
+    function item2() {
+
+      const [quantity, setQuantity] = useState(1);
+      const [price, setPrice] = useState(4);
+
+      // The quantity and the price was not synced together so we had to write the code like this to get it to work.
+      // Increments the quantity by 1 when the button is pressed.
+      function handleIncrement() {
+        setPrice((quantity + 1) *  4);
+        setQuantity(quantity + 1);
+      };
+    
+      // Decrement the quantity by 1 when the button is pressed.
+      function handleDecrement() {
+        if (quantity > 0) {
+          setPrice((quantity - 1) *  4);
+          setQuantity(quantity - 1);
+        }
+      }
+
+      return (
+        <View>
+          <Text style={styles.productHeading}>Michelob Ultra:</Text>
+          <Image style={styles.image} source={require('./photos/ultra.webp')} />
+          <Text style={styles.subheading}>Description:</Text>
+          <Text style={styles.text}>Enjoy the crisp, clean taste of Michelob ULTRA, the superior light beer with only 2.6 carbs and 95 calories per bottle.</Text>
+          <View style={styles.container}>
+            <View style={styles.buttonBox}>
+              <Button color="white" onPress={handleDecrement} title='-' />
+            </View>
+            <View style={styles.view1}>
+              <Text style={styles.text}> {quantity.toString()} </Text>
+            </View>
+            <View style={styles.buttonBox}>
+              <Button color="white" onPress={handleIncrement} title='+' />
+            </View>
+            <View style={styles.addToOrderButton}>
+              <Button color="white" title="Add to Order" />
+            </View>
+          </View>
+          <Text style={styles.text}>Price: ${price}</Text>
+        </View>
+      )
+    }
+
+    // Highnoon product display.
+    function item3() {
+
+      const [quantity, setQuantity] = useState(1);
+      const [price, setPrice] = useState(5);
+
+      // The quantity and the price was not synced together so we had to write the code like this to get it to work.
+      // Increments the quantity by 1 when the button is pressed.
+      function handleIncrement() {
+        setPrice((quantity + 1) *  5);
+        setQuantity(quantity + 1);
+      };
+    
+      // Decrement the quantity by 1 when the button is pressed.
+      function handleDecrement() {
+        if (quantity > 0) {
+          setPrice((quantity - 1) *  5);
+          setQuantity(quantity - 1);
+        }
+      }
+
+      return (
+        <View>
+          <Text style={styles.productHeading}>High Noon:</Text>
+          <Image style={styles.image} source={require('./photos/highnoon.webp')} />
+          <Text style={styles.subheading}>Description:</Text>
+          <Text style={styles.text}>Made with real vodka, real juice and sparkling water. Only 100 calories, no sugar added and gluten free.</Text>
+          <View style={styles.container}>
+            <View style={styles.buttonBox}>
+              <Button color="white" onPress={handleDecrement} title='-' />
+            </View>
+            <View style={styles.view1}>
+              <Text style={styles.text}> {quantity.toString()} </Text>
+            </View>
+            <View style={styles.buttonBox}>
+              <Button color="white" onPress={handleIncrement} title='+' />
+            </View>
+            <View style={styles.addToOrderButton}>
+              <Button color="white" title="Add to Order" />
+            </View>
+          </View>
+          <Text style={styles.text}>Price: ${price}</Text>
+        </View>
+      )
+    }
+
     return(
       <View style={styles.viewContainer}>
         <ImageBackground
@@ -105,7 +215,6 @@ const Menu = () => {
             <View style={styles.divider} />
 
             <SelectList 
-              style={styles.textInput}
               data={data} 
               setSelected={setSelected} 
               dropdownItemStyles={{marginHorizontal: 10}}
@@ -196,9 +305,5 @@ const styles = StyleSheet.create({
     width: 200, 
     height: 200, 
     resizeMode: 'contain', 
-  },
-  textInput: {
-    color: 'white',
-    placeholderTextColor: 'white', // Placeholder text color
   },
 });

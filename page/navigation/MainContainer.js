@@ -11,7 +11,7 @@ import Settings from './screens/Settings';
 import GhinHandicap from './screens/GhinHandicap'
 
 //Screen names
-const mainName = "Main";
+const mainName = "Home";
 const menuName = "Menu";
 const teetimeNames = "Tee Times";
 const settingsName = "Settings";
