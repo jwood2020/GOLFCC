@@ -34,8 +34,8 @@ export default function Settings({navigation}) {
 
             <View style={styles.divider} />
 
-            <Text style={styles.text}>{user.UserCurrent}</Text>
-            <Text style={styles.text}>Email:</Text>
+            <Text style={styles.text}>Name: {user}</Text>
+            <Text style={styles.text}>Email: {email}</Text>
             
             </ImageBackground>
         </View>
