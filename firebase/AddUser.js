@@ -22,6 +22,7 @@ async function AddUser(email, password, courseCode, fullName) {
             var id = push(ref(db, "/Users"), {
                 Name: fullName,
                 Email: email,
+                AuthID: user.uid,
             });
 
             /* Match the unique identifier of the user record
