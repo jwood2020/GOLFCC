@@ -19,12 +19,12 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="Main" screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Main" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="MainContainer" component={MainContainer} />
-        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="Home" component={MainScreen} />
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="TeeTimes" component={TeeTimes} />
         <Stack.Screen name="Settings" component={Settings} />

@@ -25,6 +25,18 @@ function MainContainer() {
         initialRouteName={mainName}
         screenOptions={({ route }) => ({
           headerShown: false,
+          tabBarActiveTintColor: "grey",
+          tabBarInactiveTintColor: "black",
+          tabBarLabelStyle: {
+            paddingBottom: 18,
+            fontSize: 12
+          },
+          tabBarStyle: [
+            {
+              display: "flex"
+            },
+            null
+          ],
           
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -49,11 +61,6 @@ function MainContainer() {
             // You can return any component that you like here!
           },
         })}
-        tabBarOptions ={{
-          activeTintColor: 'grey',
-          inactiveTintColor: 'black',
-          labelStyle: { paddingBottom: 18, fontSize: 12 },
-        }}
         >
 
         <Tab.Screen name={teetimeNames} component={TeeTimes} />

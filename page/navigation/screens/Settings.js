@@ -13,7 +13,7 @@ export default function Settings({navigation}) {
 
     function handleLogout() {
         LogoutUser();
-        navigation.navigate('Home');
+        navigation.navigate('Main');
     }
 
     return(
