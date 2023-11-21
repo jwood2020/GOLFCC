@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, ImageBackground, FlatList, Button, } from 'react-native';
-import ReturnTeeTimes from '../../../firebase/ReturnTeeTimes.js';
+import ReturnTeeTimes from '../../../firebase/ReturnTeeTimes';
+import CreateTeeTimes from '../../../firebase/CreateTeeTimes';
 import background from '../../../backgroundimage.jpeg';
 import { useState, useEffect } from 'react';
+
+// Everytime the app reloads, create tee time records that are not present.
+CreateTeeTimes();
 
 export default function TeeTimes({navigation}) {
 
     function handleIncrement() {
         if (day_offset < 13) {
 
-            set_data_display(
-                {[display_day_obj[day_offset + 1]]: [data[day_obj[day_offset + 1]]]}
-            );
-
+            data_display = {[display_day_obj[day_offset + 1]]: [data[day_obj[day_offset + 1]]]};
             set_day_offset(day_offset + 1);
         }
       };
@@ -21,9 +22,7 @@ export default function TeeTimes({navigation}) {
       function handleDecrement() {
         if (day_offset > 0) {
 
-            set_data_display(
-                {[display_day_obj[day_offset - 1]]: [data[day_obj[day_offset - 1]]]}
-            );
+            data_display = {[display_day_obj[day_offset - 1]]: [data[day_obj[day_offset - 1]]]};
 
             set_day_offset(day_offset - 1);
         }
@@ -49,7 +48,7 @@ export default function TeeTimes({navigation}) {
         display_day_obj.push(date_str);
     };
 
-    const [data_display, set_data_display] = useState({[display_day_obj[0]]: [data[day_obj[0]]]});
+    const data_display = {[display_day_obj[0]]: [data[day_obj[0]]]};
 
     let times = [];
     let times_formatted = [];
