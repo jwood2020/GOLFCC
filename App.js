@@ -1,10 +1,22 @@
-import 'react-native-gesture-handler'; // Import this at the top of your entry file
+/* App.js
+   Taylor Johnson and Jacob Woodmancy
+   CS 391 - Senior Project
+   GOLFCC
+   12-14-2023
+
+   Description: This is the entry file of the app, each page that is navigated
+   to is linked here. 
+*/
+
+/* Import this at the top of your entry file */
+import 'react-native-gesture-handler';
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from './page/HomeScreen'; // Import the screens
+/* Import the screens */
+import HomeScreen from './page/HomeScreen'; 
 import LoginScreen from './page/LoginScreen';
 import SignupScreen from './page/SignupScreen';
 import MainContainer from './page/navigation/MainContainer';

@@ -1,4 +1,15 @@
+/* page/HomeLoginSignupStyling.js
+   Taylor Johnson and Jacob Woodmancy
+   CS 391 - Senior Project
+   GOLFCC
+   12-14-2023
+
+   Description: This file contains all the styling for the home, login, and
+   signup pages. 
+*/
+
 import { StyleSheet } from 'react-native';
+
 
 const styles = StyleSheet.create({
     root: { 
@@ -76,12 +87,12 @@ const styles = StyleSheet.create({
     },
 
     footertext: {
-      textAlign: 'center', 
-      fontWeight: 'bold', 
-      color: 'white',
-      textShadowRadius: 5, 
-      textShadowColor: 'black',
-      marginBottom: 40,
+        textAlign: 'center', 
+        fontWeight: 'bold', 
+        color: 'white',
+        textShadowRadius: 5, 
+        textShadowColor: 'black',
+        marginBottom: 40,
     },
 });
 

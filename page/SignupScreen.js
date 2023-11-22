@@ -1,11 +1,27 @@
-import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+/* page/SignupScreen.js
+   Taylor Johnson and Jacob Woodmancy
+   CS 391 - Senior Project
+   GOLFCC
+   12-14-2023
+
+   Description: This program is the frontend view of the signup page.
+*/
+
+import { View, 
+         Text, 
+         TextInput, 
+         TouchableOpacity, 
+         ImageBackground } 
+from 'react-native';
+         
 import { useNavigation } from '@react-navigation/native';
 import background from '../backgroundimage.jpeg';
 import React, { useState } from 'react';
 import AddUser from "../firebase/AddUser";
 import styles from './HomeLoginSignupStyling';
 
-const SignupScreen = () => {
+
+function SignupScreen() {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -48,8 +64,14 @@ const SignupScreen = () => {
               source={background}
             >
                 <Text style={styles.heading}>GOLFCC</Text>
-                <Text style={styles.text}>“Success in this game depends less on strength of body than strength of mind and character.”</Text>
+
+                <Text style={styles.text}>
+                    “Success in this game depends less on strength of 
+                    body than strength of mind and character.”
+                </Text>
+
                 <Text style={styles.quotetext}>-Arnold Palmer</Text>
+
                 <TextInput
                     style={styles.input}
                     placeholder='Full Name'
@@ -103,8 +125,11 @@ const SignupScreen = () => {
                     onPress={() => onSignupPress()}>
                     <Text style={styles.buttonText}>Create account</Text>
                 </TouchableOpacity>
+
                 <View style={styles.footerView}>
-                    <Text style={styles.footertext}>Already got an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
+                    <Text style={styles.footertext}>
+                        Already got an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text>
+                    </Text>
                 </View>
             </ImageBackground>
         </View>
