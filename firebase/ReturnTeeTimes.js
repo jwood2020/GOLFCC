@@ -78,8 +78,6 @@ function ReturnTeeTimes() {
       }
    }
 
-   console.log(teeTimes);
-
    return teeTimes;
 }
 
