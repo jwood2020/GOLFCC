@@ -1,7 +1,16 @@
+/* firebase/LoginUser.js
+   Taylor Johnson and Jacob Woodmancy
+   CS 391 - Senior Project
+   GOLFCC
+   12-14-2023
+
+   Description: This program inputs an email and password and logs in the user
+   if the information matches a current user or alerts the user if it does not.
+   Returns whether the log in was successful.
+*/
 
 import firebase from '@react-native-firebase/app';
 import auth  from '@react-native-firebase/auth';
-import { ref, push, getDatabase } from '@react-native-firebase/database';
 
 /* We need to function to wait for the firebase code to execute so that 
    we can return whether or not it was successful. Therefore we have to 
@@ -19,6 +28,8 @@ async function LoginUser(email, password) {
             return 1;
         })
         .catch((error) => {
+
+            // Not Signed in
 
             const errorCode = error.code;
             const errorMessage = error.message;

@@ -1,3 +1,13 @@
+/* firebase/AddUser.js
+   Taylor Johnson and Jacob Woodmancy
+   CS 391 - Senior Project
+   GOLFCC
+   12-14-2023
+
+   Description: This program inputs an email and password and creates a new
+   user authentication record for that user if the email and password are
+   valid. The program then returns whether or not the creation was successful.
+*/
 
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
