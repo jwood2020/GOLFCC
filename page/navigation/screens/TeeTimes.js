@@ -1,15 +1,25 @@
-import * as React from 'react';
+/* page/navigation/screens/TeeTimes.js
+   Taylor Johnson and Jacob Woodmancy
+   CS 391 - Senior Project
+   GOLFCC
+   12-14-2023
+
+   Description: This file displays the tee times to the user and let's
+   them signup for a tee time.
+*/
+
+import { React, useState } from 'react';
 import { View, Text, StyleSheet, ImageBackground, FlatList, Button, } from 'react-native';
 import ReturnTeeTimes from '../../../firebase/ReturnTeeTimes';
 import CreateTeeTimes from '../../../firebase/CreateTeeTimes';
 import background from '../../../backgroundimage.jpeg';
-import { useState, useEffect } from 'react';
 
-// Everytime the app reloads, create tee time records that are not present.
+/* Everytime the app reloads, create tee time records that are not present. */
 CreateTeeTimes();
 
-export default function TeeTimes({navigation}) {
+function TeeTimes({navigation}) {
 
+    /* Increment the quantity by 1 when the button is pressed. */
     function handleIncrement() {
         if (day_offset < 13) {
 
@@ -18,7 +28,7 @@ export default function TeeTimes({navigation}) {
         }
       };
     
-      // Decrement the quantity by 1 when the button is pressed.
+      /* Decrement the quantity by 1 when the button is pressed. */
       function handleDecrement() {
         if (day_offset > 0) {
 
@@ -48,7 +58,7 @@ export default function TeeTimes({navigation}) {
         display_day_obj.push(date_str);
     };
 
-    const data_display = {[display_day_obj[0]]: [data[day_obj[0]]]};
+    var data_display = {[display_day_obj[0]]: [data[day_obj[0]]]};
 
     let times = [];
     let times_formatted = [];
@@ -215,3 +225,5 @@ const styles = StyleSheet.create({
         alignContent: 'center',
     },
 })
+
+export default TeeTimes;

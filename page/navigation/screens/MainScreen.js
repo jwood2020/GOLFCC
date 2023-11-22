@@ -1,8 +1,18 @@
+/* page/navigation/screens/MainScreen.js
+   Taylor Johnson and Jacob Woodmancy
+   CS 391 - Senior Project
+   GOLFCC
+   12-14-2023
+
+   Description: This file is the Home file for a golf course. This is the
+   first file that a user sees after logging in.
+*/
+
 import React from 'react';
 import { View, Text, Button, StyleSheet, ImageBackground } from 'react-native';
 import background from '../../../backgroundimage.jpeg';
 
-const MainScreen = ({navigation}) => {
+function MainScreen({navigation}) {
     return(
         <View style={styles.viewContainer}>
 
@@ -16,7 +26,11 @@ const MainScreen = ({navigation}) => {
 
                 <View style={styles.divider} />
 
-                <Text style={styles.bodyText}>Fox Run Golf Club located in Council Bluffs, IA offers some of the finest and most well-maintained playing conditions in the Metro Area.</Text>
+                <Text style={styles.bodyText}>
+                    Fox Run Golf Club located in Council Bluffs, IA 
+                    offers some of the finest and most well-
+                    maintained playing conditions in the Metro Area.
+                </Text>
             </View>
             
         </ImageBackground>
