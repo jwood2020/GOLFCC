@@ -72,7 +72,31 @@ function ReturnTeeTimes() {
             /* If its the day we are looking for then add it to our object */
             if (day === data) {
 
-               teeTimes[day] = db_data[index][day];
+               let day_obj = {}
+
+               /* Loop through all the times during the day */
+               for (time in db_data[index][day]) {
+
+                  /* keep track of the number of available slots per time */
+                  let num_players = 0;
+
+                  /* This is only one iteration as it is just one player list */
+                  for (player_list in db_data[index][day][time]) {
+
+                     /* Loop through each player */
+                     for (player in db_data[index][day][time][player_list]) {
+                        
+                        /* If the entry is blank, then its available */
+                        if (db_data[index][day][time][player_list][player] === "") {
+                           num_players += 1;
+                        }
+                     }
+                  }
+
+                  day_obj[time] = num_players;
+               }
+
+               teeTimes[day] = day_obj;
             };
          }
       }
