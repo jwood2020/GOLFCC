@@ -1,23 +1,15 @@
-/* page/navigation/screens/TeeTimes.js
+/* page/navigation/screens/BookTeeTime.js
    Taylor Johnson and Jacob Woodmancy
    CS 391 - Senior Project
    GOLFCC
    12-14-2023
 
-   Description: This file displays the tee times to the user and lets
-   them signup for a tee time.
+   Description: This file displays the popup modal where the user enters in
+   players for a tee time.
 */
 
 import { React, useState } from 'react';
-
-import { View, 
-         Text, 
-         StyleSheet, 
-         FlatList, 
-         Button,
-         TextInput, } 
-from 'react-native';
-
+import { View, Text, StyleSheet, Button, TextInput, } from 'react-native';
 import Modal from 'react-native-modal';
 
 function BookTeeTime({route, navigation}) {
