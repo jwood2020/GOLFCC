@@ -16,8 +16,6 @@
    firebase/CreateTeeTimes.js.
 */
 
-import firebase from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import { ref, onValue, getDatabase } from '@react-native-firebase/database';
 import { useState, useEffect } from 'react';
 
@@ -81,10 +79,10 @@ function ReturnTeeTimes() {
                   let num_players = 0;
 
                   /* Loop through each player */
-                  for (player in db_data[index][day][time]["Players"]) {
+                  for (player in db_data[index][day][time]) {
                      
                      /* If the entry is blank, then its available */
-                     if (db_data[index][day][time]["Players"][player] === "") {
+                     if (db_data[index][day][time][player] === "") {
                         num_players += 1;
                      }
                   }

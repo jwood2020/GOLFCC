@@ -98,25 +98,18 @@ async function CreateTeeTimes() {
                                    ":" + j.toString().padEnd(2, '0');
 
                     /* Allow 4 players per tee time at max. */
-                    /* The other field will be the unique id of the user 
-                       whoever creates the tee time (may be a list if more
-                       than one user) */
-                    data_obj[time_str] = {Players: {Player1: "", 
-                                                    Player2: "", 
-                                                    Player3: "", 
-                                                    Player4: "" }, 
-                                          user_uid: ""
-                                         };
+                    data_obj[time_str] = {Player1: "", 
+                                         Player2: "", 
+                                         Player3: "", 
+                                         Player4: "" };
                 }
             }
 
             /* Also allow 5:00 PM to be a time */
-            data_obj["17:00"] = {Players: {Player1: "", 
-                                           Player2: "", 
-                                           Player3: "", 
-                                           Player4: "" }, 
-                                 user_uid: ""
-                                };
+            data_obj["17:00"] = {Player1: "", 
+                                 Player2: "", 
+                                 Player3: "", 
+                                 Player4: "" };
 
             await push(data_ref, {
                 [data]: data_obj
