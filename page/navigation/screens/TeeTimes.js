@@ -9,18 +9,12 @@
 */
 
 import { React, useState } from 'react';
-
-import { View, 
-         Text, 
-         StyleSheet, 
-         ImageBackground, 
-         FlatList, 
-         Button, } 
-from 'react-native';
+import { View, Text, ImageBackground, FlatList, Button, } from 'react-native';
 
 import ReturnTeeTimes from '../../../firebase/ReturnTeeTimes';
 import CreateTeeTimes from '../../../firebase/CreateTeeTimes';
 import background from '../../../backgroundimage.jpeg';
+import styles from './TabPagesStyling';
 
 /* Everytime the app reloads, create tee time records that are not present. */
 CreateTeeTimes();
@@ -169,7 +163,7 @@ function TeeTimes({navigation}) {
 
             <ImageBackground
               style={styles.backgroundContainer}
-              imageStyle={styles.image}
+              imageStyle={styles.backgroundImage}
               source={background}
             >
             <View style={styles.container}>
@@ -187,7 +181,7 @@ function TeeTimes({navigation}) {
                         </Text>
                         <View style={styles.container}>
 
-                            <View style={styles.buttonBox}>
+                            <View style={styles.teeTimesButtonBox}>
                                 <Button color="white" 
                                         onPress={handleDecrement} 
                                         title='<' 
@@ -196,7 +190,7 @@ function TeeTimes({navigation}) {
 
                             <TimeList data_list={times_formatted} />
 
-                            <View style={styles.buttonBox}>
+                            <View style={styles.teeTimesButtonBox}>
                                 <Button color="white" 
                                         onPress={handleIncrement} 
                                         title='>' 
@@ -208,14 +202,14 @@ function TeeTimes({navigation}) {
                 ) : (
                 <View style={styles.container}>
 
-                    <View style={styles.buttonBox}>
+                    <View style={styles.teeTimesButtonBox}>
                         <Button color="white" 
                                 onPress={handleDecrement} 
                                 title='<' 
                         />
                     </View>
                     <Text style={styles.boldtext}>No Tee Times Available</Text>
-                    <View style={styles.buttonBox}>
+                    <View style={styles.teeTimesButtonBox}>
                         <Button color="white" 
                                 onPress={handleIncrement} 
                                 title='>' 
@@ -229,83 +223,5 @@ function TeeTimes({navigation}) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    viewContainer: {
-        flex: 1,
-    },
-    backgroundContainer: {
-        flex: 1,  
-        paddingHorizontal: 20, 
-        paddingVertical: 50,
-        backgroundColor: 'black',
-    },
-    image: { 
-        opacity: .4 
-    },
-    logoutText: {
-        color: 'white',
-    },
-    headingText: {
-        fontSize: 26,
-        paddingLeft: 10,
-        color: 'white',
-        fontWeight: 'bold',
-    },
-    bodyText: {
-        color: 'white',
-        paddingLeft: 10,
-        paddingTop: 10
-    },
-    divider: {
-        borderBottomWidth: 1,
-        borderColor: 'gray', 
-        marginVertical: 10,
-      },
-    text: {
-        color: 'white',
-        marginVertical: 5,
-        textAlign: 'center',
-    },
-    boldtext: {
-        color: 'white',
-        marginTop: 5,
-        marginBottom: 10,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 16,
-    },
-    buttonBox: {
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 5, 
-        padding: 1, 
-        width: 30,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    flatList: {
-        marginBottom: 120,
-
-    },
-    teeTimeBox: {
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 5, 
-        padding: 12, 
-    },
-    modal: {
-        flex: 1,  
-        paddingHorizontal: 20, 
-        paddingVertical: 50,
-        backgroundColor: 'white',
-    }
-})
 
 export default TeeTimes;

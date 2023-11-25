@@ -9,9 +9,10 @@
 */
 
 import { React, useState } from 'react';
-import { View, Text, StyleSheet, Button, TextInput, } from 'react-native';
+import { View, Text, Button, TextInput, } from 'react-native';
 import Modal from 'react-native-modal';
 import UpdateTeeTimes from '../../../firebase/UpdateTeeTimes';
+import styles from './TabPagesStyling';
 
 function BookTeeTime({route, navigation}) {
 
@@ -97,83 +98,5 @@ function BookTeeTime({route, navigation}) {
         </Modal>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    viewContainer: {
-        flex: 1,
-    },
-    backgroundContainer: {
-        flex: 1,  
-        paddingHorizontal: 20, 
-        paddingVertical: 50,
-        backgroundColor: 'black',
-    },
-    image: { 
-        opacity: .4 
-    },
-    logoutText: {
-        color: 'white',
-    },
-    headingText: {
-        fontSize: 26,
-        paddingLeft: 10,
-        color: 'white',
-        fontWeight: 'bold',
-    },
-    bodyText: {
-        color: 'white',
-        paddingLeft: 10,
-        paddingTop: 10
-    },
-    divider: {
-        borderBottomWidth: 1,
-        borderColor: 'gray', 
-        marginVertical: 10,
-      },
-    text: {
-        color: 'white',
-        marginVertical: 5,
-        textAlign: 'center',
-    },
-    boldtext: {
-        color: 'white',
-        marginTop: 5,
-        marginBottom: 10,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 16,
-    },
-    buttonBox: {
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 5, 
-        padding: 1, 
-        width: 30,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    flatList: {
-        marginBottom: 120,
-
-    },
-    teeTimeBox: {
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 5, 
-        padding: 12, 
-    },
-    modal: {
-        flex: 1,  
-        paddingHorizontal: 20, 
-        paddingVertical: 50,
-        backgroundColor: 'white',
-    }
-})
 
 export default BookTeeTime;

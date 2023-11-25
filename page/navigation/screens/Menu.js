@@ -9,18 +9,12 @@
 */
 
 import { React, useState } from "react";
-
-import { View, 
-         Text, 
-         StyleSheet, 
-         Button, 
-         Image, 
-         ImageBackground } 
-from 'react-native';
-
+import { View, Text, Button, Image, ImageBackground } from 'react-native';
 import { SelectList } from "react-native-dropdown-select-list";
 import RNPickerSelect from 'react-native-picker-select';
+
 import background from '../../../backgroundimage.jpeg';
+import styles from './TabPagesStyling';
 
 function Menu() {
 
@@ -115,7 +109,7 @@ function Menu() {
               that delivers fewer calories and a classic taste.
           </Text>
 
-          <View style={styles.container}>
+          <View style={styles.menuContainer}>
 
             <View style={styles.buttonBox}>
               <Button color="white" onPress={handleDecrement} title='-' />
@@ -175,7 +169,7 @@ function Menu() {
               calories per bottle.
           </Text>
 
-          <View style={styles.container}>
+          <View style={styles.menuContainer}>
 
             <View style={styles.buttonBox}>
               <Button color="white" onPress={handleDecrement} title='-' />
@@ -235,7 +229,7 @@ function Menu() {
               free.
           </Text>
 
-          <View style={styles.container}>
+          <View style={styles.menuContainer}>
 
             <View style={styles.buttonBox}>
               <Button color="white" onPress={handleDecrement} title='-' />
@@ -268,7 +262,7 @@ function Menu() {
               source={background}
         >
         
-          <Text style={styles.heading}>Fox Run Golf Club</Text>
+          <Text style={styles.headingText}>Fox Run Golf Club</Text>
             
             <View style={styles.divider} />
 
@@ -294,74 +288,3 @@ function Menu() {
 }
 
 export default Menu;
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  viewContainer: {
-    flex: 1,
-  },
-  backgroundImage: {
-    opacity: 0.4,
-  },
-  backgroundContainer: {
-    flex: 1,  
-    paddingHorizontal: 20, 
-    paddingVertical: 50,
-    backgroundColor: 'black',
-  },
-  view1: {
-    padding: 10,
-    margin: 5,
-
-  },
-  heading: {
-    fontSize: 26,
-    paddingLeft: 10,
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  productHeading: {
-    fontSize: 26,
-    paddingLeft: 10,
-    color: 'white',
-    fontWeight: 'bold',
-    paddingTop: 10,
-  },
-  subheading: {
-    fontWeight: 'bold',
-    marginVertical: 5,
-    color: 'white',
-  },
-  text: {
-    marginVertical: 5,
-    color: 'white',
-  },
-  buttonBox: {
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 5, 
-    padding: 1, 
-    width: 30,
-  },
-  addToOrderButton: {
-    borderWidth: 1, 
-    borderColor: 'white',
-    borderRadius: 5,
-    padding: 1, 
-    marginLeft: 'auto',
-    color: 'white',
-  },  
-  divider: {
-    borderBottomWidth: 1,
-    borderColor: 'gray', 
-    marginVertical: 10,
-  },
-  image: {
-    width: 200, 
-    height: 200, 
-    resizeMode: 'contain', 
-  },
-});

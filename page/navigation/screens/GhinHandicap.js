@@ -9,16 +9,17 @@
 */
 
 import React from 'react';
-import { View, Text, Button, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, Button, ImageBackground } from 'react-native';
 import background from '../../../backgroundimage.jpeg';
+import styles from './TabPagesStyling';
 
 function GhinScreen ({navigation}) {
     return(
         <View style={styles.viewContainer}>
 
             <ImageBackground
-              style={styles.container}
-              imageStyle={styles.image}
+              style={styles.mainContainer}
+              imageStyle={styles.backgroundImage}
               source={background}
             >
                 <View>
@@ -43,37 +44,3 @@ function GhinScreen ({navigation}) {
 };
 
 export default GhinScreen
-
-const styles = StyleSheet.create({
-    root: {
-        flex: 1,
-    },
-    viewContainer: {
-        flex: 1,
-    },
-    container: {
-        flex: 1,  
-        paddingHorizontal: 20, 
-        paddingVertical: 50,
-        backgroundColor: 'black',
-    },
-    image: { 
-        opacity: .4 
-    },
-    headingText: {
-        fontSize: 26,
-        paddingLeft: 10,
-        color: 'white',
-        fontWeight: 'bold',
-    },
-    bodyText: {
-        color: 'white',
-        paddingLeft: 10,
-        paddingTop: 10
-    },
-    divider: {
-        borderBottomWidth: 1,
-        borderColor: 'gray', 
-        marginVertical: 10,
-    },
-})

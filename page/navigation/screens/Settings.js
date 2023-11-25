@@ -8,10 +8,11 @@
 */
 
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, ImageBackground } from 'react-native';
 import LogoutUser from '../../../firebase/LogoutUser';
 import background from '../../../backgroundimage.jpeg';
 import ReturnUser from '../../../firebase/ReturnUser';
+import styles from './TabPagesStyling';
 
 
 function Settings({navigation}) {
@@ -33,7 +34,7 @@ function Settings({navigation}) {
             
             <ImageBackground
                 style={styles.backgroundContainer}
-                imageStyle={styles.image}
+                imageStyle={styles.backgroundImage}
                 source={background}
             >
                 <View style={styles.container}>
@@ -58,49 +59,5 @@ function Settings({navigation}) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    viewContainer: {
-        flex: 1,
-    },
-    backgroundContainer: {
-        flex: 1,  
-        paddingHorizontal: 20, 
-        paddingVertical: 50,
-        backgroundColor: 'black',
-    },
-    image: { 
-        opacity: .4 
-    },
-    logoutText: {
-        color: 'white',
-    },
-    headingText: {
-        fontSize: 26,
-        paddingLeft: 10,
-        color: 'white',
-        fontWeight: 'bold',
-    },
-    bodyText: {
-        color: 'white',
-        paddingLeft: 10,
-        paddingTop: 10
-    },
-    divider: {
-        borderBottomWidth: 1,
-        borderColor: 'gray', 
-        marginVertical: 10,
-      },
-    text: {
-        color: 'white',
-        marginVertical: 5,
-    }
-})
 
 export default Settings;
