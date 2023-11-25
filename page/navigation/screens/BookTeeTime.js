@@ -11,13 +11,14 @@
 import { React, useState } from 'react';
 import { View, Text, StyleSheet, Button, TextInput, } from 'react-native';
 import Modal from 'react-native-modal';
+import UpdateTeeTimes from '../../../firebase/UpdateTeeTimes';
 
 function BookTeeTime({route, navigation}) {
 
     const { day, data_day, time, data_time } = route.params;
 
     function bookTeeTime() {
-        UpdateTeeTimes(Player1,Player2,Player3,Player4);
+        UpdateTeeTimes(data_day,data_time,Player1,Player2,Player3,Player4);
         navigateBack();
     }
 
