@@ -11,7 +11,6 @@
 import { React, useState } from "react";
 import { View, Text, Button, Image, ImageBackground } from 'react-native';
 import { SelectList } from "react-native-dropdown-select-list";
-import RNPickerSelect from 'react-native-picker-select';
 
 import background from '../../../backgroundimage.jpeg';
 import styles from './TabPagesStyling';
@@ -48,10 +47,23 @@ function Menu() {
     data.sort((a, b) => a.value.localeCompare(b.value));
 
     const contentToShow = {
-        1: item1(), 
+        1: item(4,
+                "Busch Light:",
+                "Busch Light Beer is a light bodied American beer " +
+                "that delivers fewer calories and a classic taste.",
+                require("./photos/buschlightcan.webp")
+                ), 
+
         2: 'Content for Item 2',
         3: 'Content for Item 3',
-        4: item2(),
+        4: item(4,
+                "Michelob Ultra:",
+                "Enjoy the crisp, clean taste of Michelob ULTRA, the " +
+                "superior light beer with only 2.6 carbs and 95 " +
+                "calories per bottle.",
+                require('./photos/ultra.webp')
+                ), 
+
         5: 'Content for Item 5',
         6: 'Content for Item 6',
         7: 'Content for Item 7',
@@ -63,7 +75,14 @@ function Menu() {
         13: 'Content for Item 13',
         14: 'Content for Item 14',
         15: 'Content for Item 15',
-        16: item3(),
+        16: item(5,
+                 "High Noon:",
+                 "Made with real vodka, real juice and sparkling " +
+                 "water. Only 100 calories, no sugar added and gluten " +
+                 "free.",
+                 require('./photos/highnoon.webp')
+                 ), 
+
         17: 'Content for Item 17',
         18: 'Content for Item 18',
         19: 'Content for Item 19',
@@ -75,39 +94,35 @@ function Menu() {
         setSelected(value);
     };
 
-    // Busch Light product display.
-    function item1() {
+    function item(price_factor, item_name, item_desc, image_path) {
 
       const [quantity, setQuantity] = useState(1);
-      const [price, setPrice] = useState(4 );
+      const [price, setPrice] = useState(price_factor);
 
       // The quantity and the price were not synced together so we had to write
       // the code like this to get it to work.
       // Increments the quantity by 1 when the button is pressed.
       function handleIncrement() {
-        setPrice((quantity + 1) *  4);
+        setPrice((quantity + 1) *  price_factor);
         setQuantity(quantity + 1);
       };
     
       // Decrement the quantity by 1 when the button is pressed.
       function handleDecrement() {
         if (quantity > 0) {
-          setPrice((quantity - 1) *  4);
+          setPrice((quantity - 1) *  price_factor);
           setQuantity(quantity - 1);
         }
       }
 
       return (
         <View>
-          <Text style={styles.productHeading}>Busch Light:</Text>
+          <Text style={styles.productHeading}>{item_name}</Text>
 
-          <Image style={styles.image} source={require('./photos/buschlightcan.webp')} />
+          <Image style={styles.image} source={image_path} />
 
           <Text style={styles.subheading}>Description:</Text>
-          <Text style={styles.text}>
-              Busch Light Beer is a light bodied American beer 
-              that delivers fewer calories and a classic taste.
-          </Text>
+          <Text style={styles.text}>{item_desc}</Text>
 
           <View style={styles.menuContainer}>
 
@@ -129,126 +144,6 @@ function Menu() {
 
           </View>
           
-          <Text style={styles.text}>Price: ${price}</Text>
-        </View>
-      )
-    }
-
-    // Michelob Ultra product display.
-    function item2() {
-
-      const [quantity, setQuantity] = useState(1);
-      const [price, setPrice] = useState(4);
-
-      // The quantity and the price was not synced together so we had to write
-      // the code like this to get it to work.
-      // Increments the quantity by 1 when the button is pressed.
-      function handleIncrement() {
-        setPrice((quantity + 1) *  4);
-        setQuantity(quantity + 1);
-      };
-    
-      // Decrement the quantity by 1 when the button is pressed.
-      function handleDecrement() {
-        if (quantity > 0) {
-          setPrice((quantity - 1) *  4);
-          setQuantity(quantity - 1);
-        }
-      }
-
-      return (
-        <View>
-          <Text style={styles.productHeading}>Michelob Ultra:</Text>
-
-          <Image style={styles.image} source={require('./photos/ultra.webp')} />
-
-          <Text style={styles.subheading}>Description:</Text>
-          <Text style={styles.text}>
-              Enjoy the crisp, clean taste of Michelob ULTRA, the 
-              superior light beer with only 2.6 carbs and 95 
-              calories per bottle.
-          </Text>
-
-          <View style={styles.menuContainer}>
-
-            <View style={styles.buttonBox}>
-              <Button color="white" onPress={handleDecrement} title='-' />
-            </View>
-
-            <View style={styles.view1}>
-              <Text style={styles.text}> {quantity.toString()} </Text>
-            </View>
-
-            <View style={styles.buttonBox}>
-              <Button color="white" onPress={handleIncrement} title='+' />
-            </View>
-
-            <View style={styles.addToOrderButton}>
-              <Button color="white" title="Add to Order" />
-            </View>
-
-          </View>
-
-          <Text style={styles.text}>Price: ${price}</Text>
-        </View>
-      )
-    }
-
-    // Highnoon product display.
-    function item3() {
-
-      const [quantity, setQuantity] = useState(1);
-      const [price, setPrice] = useState(5);
-
-      // The quantity and the price was not synced together so we had to write
-      // the code like this to get it to work.
-      // Increments the quantity by 1 when the button is pressed.
-      function handleIncrement() {
-        setPrice((quantity + 1) *  5);
-        setQuantity(quantity + 1);
-      };
-    
-      // Decrement the quantity by 1 when the button is pressed.
-      function handleDecrement() {
-        if (quantity > 0) {
-          setPrice((quantity - 1) *  5);
-          setQuantity(quantity - 1);
-        }
-      }
-
-      return (
-        <View>
-          <Text style={styles.productHeading}>High Noon:</Text>
-
-          <Image style={styles.image} source={require('./photos/highnoon.webp')} />
-
-          <Text style={styles.subheading}>Description:</Text>
-          <Text style={styles.text}>
-              Made with real vodka, real juice and sparkling 
-              water. Only 100 calories, no sugar added and gluten 
-              free.
-          </Text>
-
-          <View style={styles.menuContainer}>
-
-            <View style={styles.buttonBox}>
-              <Button color="white" onPress={handleDecrement} title='-' />
-            </View>
-
-            <View style={styles.view1}>
-              <Text style={styles.text}> {quantity.toString()} </Text>
-            </View>
-
-            <View style={styles.buttonBox}>
-              <Button color="white" onPress={handleIncrement} title='+' />
-            </View>
-
-            <View style={styles.addToOrderButton}>
-              <Button color="white" title="Add to Order" />
-            </View>
-
-          </View>
-
           <Text style={styles.text}>Price: ${price}</Text>
         </View>
       )
