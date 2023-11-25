@@ -4,7 +4,7 @@
    GOLFCC
    12-14-2023
 
-   Description: This file displays the tee times to the user and let's
+   Description: This file displays the tee times to the user and lets
    them signup for a tee time.
 */
 
@@ -26,6 +26,14 @@ import background from '../../../backgroundimage.jpeg';
 CreateTeeTimes();
 
 function TeeTimes({navigation}) {
+
+    function showPopup(time, data_time) {
+        navigation.navigate("BookTeeTime", {
+            day: display_day_obj[day_offset], 
+            data_day: day_obj[day_offset], 
+            time: time,
+            data_time: data_time});
+    }
 
     /* Increment the quantity by 1 when the button is pressed. */
     function handleIncrement() {
@@ -78,7 +86,7 @@ function TeeTimes({navigation}) {
        rerendered and this variable is redeclared. Therefore we will always
        declare it to be the data at whatever day_offset is. */
     var data_display = {[display_day_obj[day_offset]]: 
-                        [data[day_obj[day_offset]]]};
+                        data[day_obj[day_offset]]};
 
     /* Similiar to how day_obj and display_day_obj work, times will be the 
        time as it appears in the database and times_formatted will be the time
@@ -91,22 +99,24 @@ function TeeTimes({navigation}) {
        it will continue with data as empty and therefore data_display will be 
        undefined. The .sort() line of code will error if we try to find the 
        keys of an object that is undefined. For some reason Object.values 
-       returns what we want inside a two dimensional array, which is why we
-       reference it at [0][0]. */
-    if (Object.values(data_display)[0][0] !== undefined) {
-        times = Object.keys(Object.values(data_display)[0][0]).sort();
+       returns what we want inside an array, which is why we reference it
+       at [0]. */
+    if (Object.values(data_display)[0] !== undefined) {
+        times = Object.keys(Object.values(data_display)[0]).sort();
 
         /* Next we will convert each time to a form more readable to the 
            user. */
         for (let i in times) {
 
             let new_str = '';
+            let key = display_day_obj[day_offset];
+            let num_players = data_display[key][times[i]];
 
             /* 10 and 11 will need an AM and won't need to trim off a 
                leading 0. */
             if (times[i].substring(0,2) === "10" || 
                 times[i].substring(0,2) === "11") {
-                new_str = times[i] + " AM";
+                new_str = times[i] + " AM (" + num_players + ")";
             }
 
             /* Every number greater than 11 is PM. */
@@ -121,27 +131,32 @@ function TeeTimes({navigation}) {
                                + times[i].substring(2);
                 }
 
-                new_str = new_str + " PM";
+                new_str = new_str + " PM (" + num_players + ")";
             }
 
             if (times[i][0] === '0') {
-                new_str = times[i].substring(1) + " AM";
+                new_str = times[i].substring(1) + " AM (" + num_players + ")";
             }
 
-            times_formatted.push(new_str);
+            if (num_players !== 0) {
+                times_formatted.push(new_str);
+            }
 
         }
     }
 
     const TimeList = ({ data_list }) => {
-        const renderItem = ({ item }) => (
-          <View>
-            <Text style={styles.text}>{item}</Text>
+        const renderItem = ({ item, index }) => (
+          <View style={styles.teeTimeBox}>
+            <Button
+                  color="white" 
+                  onPress={() => showPopup(item, times[index])} 
+                  title={item}/>
           </View>
         );
       
         return (
-            <FlatList style={styles.flatList}
+            <FlatList
               data={data_list}
               renderItem={renderItem}
               keyExtractor={(item) => item}
@@ -166,7 +181,7 @@ function TeeTimes({navigation}) {
             <View>
                 {Object.keys(data_display).length > 0 &&
                 Object.keys(data_display)[0] != "undefined" ? (
-                    <View>
+                    <View style={styles.flatList}>
                         <Text style={styles.boldtext}>
                             {Object.keys(data_display)[0]}
                         </Text>
@@ -260,9 +275,11 @@ const styles = StyleSheet.create({
     },
     boldtext: {
         color: 'white',
-        marginVertical: 5,
+        marginTop: 5,
+        marginBottom: 10,
         fontWeight: 'bold',
         textAlign: 'center',
+        fontSize: 16,
     },
     buttonBox: {
         borderWidth: 1,
@@ -270,11 +287,25 @@ const styles = StyleSheet.create({
         borderRadius: 5, 
         padding: 1, 
         width: 30,
+        marginLeft: 10,
+        marginRight: 10,
     },
     flatList: {
-        width: '50%',
-        alignContent: 'center',
+        marginBottom: 120,
+
     },
+    teeTimeBox: {
+        borderWidth: 1,
+        borderColor: 'white',
+        borderRadius: 5, 
+        padding: 12, 
+    },
+    modal: {
+        flex: 1,  
+        paddingHorizontal: 20, 
+        paddingVertical: 50,
+        backgroundColor: 'white',
+    }
 })
 
 export default TeeTimes;

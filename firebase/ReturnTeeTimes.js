@@ -80,16 +80,12 @@ function ReturnTeeTimes() {
                   /* keep track of the number of available slots per time */
                   let num_players = 0;
 
-                  /* This is only one iteration as it is just one player list */
-                  for (player_list in db_data[index][day][time]) {
-
-                     /* Loop through each player */
-                     for (player in db_data[index][day][time][player_list]) {
-                        
-                        /* If the entry is blank, then its available */
-                        if (db_data[index][day][time][player_list][player] === "") {
-                           num_players += 1;
-                        }
+                  /* Loop through each player */
+                  for (player in db_data[index][day][time]["Players"]) {
+                     
+                     /* If the entry is blank, then its available */
+                     if (db_data[index][day][time]["Players"][player] === "") {
+                        num_players += 1;
                      }
                   }
 

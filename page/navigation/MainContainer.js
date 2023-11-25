@@ -17,7 +17,7 @@ import MainScreen from './screens/MainScreen';
 import Menu from './screens/Menu';
 import TeeTimes from './screens/TeeTimes';
 import Settings from './screens/Settings';
-import GhinHandicap from './screens/GhinHandicap'
+import GhinHandicap from './screens/GhinHandicap';
 
 /* Screen names */
 const mainName = "Home";

@@ -24,6 +24,7 @@ import MainScreen from './page/navigation/screens/MainScreen';
 import Menu from './page/navigation/screens/Menu';
 import TeeTimes from './page/navigation/screens/TeeTimes';
 import Settings from './page/navigation/screens/Settings';
+import BookTeeTime from './page/navigation/screens/BookTeeTime';
 
 const Stack = createStackNavigator();
 
@@ -40,6 +41,7 @@ function App() {
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="TeeTimes" component={TeeTimes} />
         <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="BookTeeTime" component={BookTeeTime} />
       </Stack.Navigator>
     </NavigationContainer>
   );
