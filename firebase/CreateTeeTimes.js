@@ -51,7 +51,7 @@ async function CreateTeeTimes() {
     console.log("db_data", db_data);
 
     /* Loop through each day for two weeks */
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 7; i++) {
 
         /* Create a new date type for the ith day from today */
         var data_date = new Date(new Date().getTime()+(i*24*60*60*1000));

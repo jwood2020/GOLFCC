@@ -9,7 +9,7 @@
 */
 
 import { React, useState } from "react";
-import { View, Text, Button, Image, ImageBackground } from 'react-native';
+import { View, Text, Button, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import { SelectList } from "react-native-dropdown-select-list";
 
 import background from '../../../backgroundimage.jpeg';
@@ -126,20 +126,27 @@ function Menu() {
 
           <View style={styles.menuContainer}>
 
-            <View style={styles.buttonBox}>
-              <Button color="white" onPress={handleDecrement} title='-' />
-            </View>
+            <TouchableOpacity style={styles.buttonBox} 
+                                      onPress={handleDecrement}>
+                                        
+                  <Text style={styles.centeredText}>{'-'}</Text>
+            </TouchableOpacity>
 
             <View style={styles.view1}>
               <Text style={styles.text}> {quantity.toString()} </Text>
             </View>
 
-            <View style={styles.buttonBox}>
-              <Button color="white" onPress={handleIncrement} title='+' />
-            </View>
+            <TouchableOpacity style={styles.buttonBox} 
+                                      onPress={handleIncrement}>
+                                        
+                <Text style={styles.centeredText}>{'+'}</Text>
+            </TouchableOpacity>
 
-            <View style={styles.addToOrderButton}>
-              <Button color="white" title="Add to Order" />
+            <View style={styles.addToOrderButton} >
+              <TouchableOpacity>
+                                          
+                  <Text style={styles.centeredText}>{'Add to Order'}</Text>
+              </TouchableOpacity>
             </View>
 
           </View>
@@ -175,7 +182,7 @@ function Menu() {
             />
 
             {selected && (
-              <Text>{contentToShow[selected]}</Text>
+              <View>{contentToShow[selected]}</View>
             )}  
         </ImageBackground>
       </View>

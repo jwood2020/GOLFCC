@@ -16,6 +16,7 @@ import styles from './TabPagesStyling';
 
 function BookTeeTime({route, navigation}) {
 
+    /* Gather parameters passed from the calling program (TeeTimes.js) */
     const { day, data_day, time, data_time } = route.params;
 
     function bookTeeTime() {
