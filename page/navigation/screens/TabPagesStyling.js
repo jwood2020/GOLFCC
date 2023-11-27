@@ -77,6 +77,12 @@ const styles = StyleSheet.create({
         color: 'white',
         marginVertical: 5,
     },
+
+    centeredText: {
+        color: 'white',
+        marginVertical: 5,
+        textAlign: 'center',
+    },
     
     boldtext: {
         color: 'white',
@@ -122,8 +128,9 @@ const styles = StyleSheet.create({
     teeTimeBox: {
         borderWidth: 1,
         borderColor: 'white',
-        borderRadius: 5, 
+        borderRadius: 10, 
         padding: 12, 
+        marginBottom: 10,
     },
 
     modal: {
