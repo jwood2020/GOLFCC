@@ -20,7 +20,6 @@ import background from '../../../backgroundimage.jpeg';
 import styles from './TabPagesStyling';
 
 
-
 function Settings({navigation}) {
 
     /* ReturnUser will return an array with the user's name in the 
@@ -35,82 +34,105 @@ function Settings({navigation}) {
         navigation.navigate('Main');
     }
 
+    /* Object containing all the Tee Times data created by the user */
     const userTeeTimes = ReturnUserTeeTimes();
 
-    let day_obj = [];
-    let times = [];
+    /* Array containing the data we will display to the user */
+    /* Each element of the array will be a tee time entry */
+    let display_obj = [];
 
+    /* loop through all the days in the data */
     for (day in userTeeTimes) {
-        day_obj.push(day);
+
+        let times = [];
+
+        /* Loop through all the times for that day */
+        /* NOTE: This will be unsorted */
         for (time in userTeeTimes[day]) {
             times.push(time);
         }
-    }
 
-    let display_day_obj = convertDate(day_obj);
-    let times_formatted = convertTime(times);
+        /* Sort those times and convert them to a more readable format */
+        times = times.sort();
+        let times_formatted = convertTime(times);
 
-    let display_obj = []
-    let index1 = 0;
-    let index2 = 0;
+        /* Now loop through the times that were created for that day */
+        for (index in times) {
 
-    for (day in userTeeTimes) {
-        for (time in userTeeTimes[day]) {
+            /* We want to display the more readable format, with the day */
+            /* first. temp_obj will be an array with all the information */
+            /* per tee time entry */
             let temp_obj = [];
-            temp_obj.push(display_day_obj[index1]);
-            temp_obj.push(times_formatted[index2]);
-            for (player in userTeeTimes[day][time]) {
-                temp_obj.push(userTeeTimes[day][time][player]['player']);
+            temp_obj.push(convertDate([day]));
+            temp_obj.push(times_formatted[index]);
+
+            /* Add all the players associated with this tee time */
+            for (player in userTeeTimes[day][times[index]]) {
+                temp_obj.push(
+                    userTeeTimes[day][times[index]][player]['player']
+                );
             }
+
+            /* Add this tee time entry to the list of all tee time entries */
             display_obj.push(temp_obj);
-            index2 += 1;
         }
-        index1 += 1;
     }
 
-    const TimeList = ({ data_list }) => {
+    const TimeList = ({ display_obj }) => {
+
+        /* Array of views - each view will be a tee time entry */
         var item_view = [];
 
-        for (item_index in data_list) {
-            let temp_obj = [];
-            for (index in data_list[item_index]){
+        /* for each tee time entry */
+        for (item_index in display_obj) {
 
+            /* temp_obj will be an individual view */
+            let temp_obj = [];
+
+            /* for each piece of information associated with the tee time */
+            for (index in display_obj[item_index]){
+
+                /* We will use this to label the information */
                 let label_str = '';
 
+                /* The first piece of information is the date */
                 if (Number(index) === 0) {
                     label_str = "Date: ";
                 }
 
                 else {
+                    /* The second piece of information is the time */
                     if (Number(index) === 1) {
                         label_str = "Time: ";
                     }
 
+                    /* The rest of the information is player information */
                     else {
                         label_str = "Player " + (index - 1).toString() + ": "
                     }
                 }
                 
+                /* We need a unique key for each view, and we know each */
+                /* position in the array is unique, so use that. */
                 temp_obj.push(
                     <View key={item_index.toString() + index.toString()}>
                         <Text style={styles.text}>
-                            {label_str}{data_list[item_index][index]}
+                            {label_str}{display_obj[item_index][index]}
                         </Text>
                     </View>
                 )
             }
-            console.log("item_index", item_index)
+
+            /* Add each view to our array of views */
             item_view.push(
-                <View key={"new key" + item_index.toString()}>
+                <View>
                     {temp_obj}
                 </View>
             )
         }
 
-        console.log("item_view", item_view);
-
-        const renderItem = ({ item, index }) => (
-            <View style={styles.teeTimeBox} key={index.toString()}>
+        const renderItem = ({ item }) => (
+            <View style={styles.teeTimeBox}>
                 { item }
             </View>
         );
@@ -152,10 +174,10 @@ function Settings({navigation}) {
                 <Text></Text>
 
                 { display_obj.length > 0 ? (
-                <View>
+                <View style={styles.flatList}>
 
                     <Text style={styles.boldtext}>Upcoming Tee Times</Text>
-                    <TimeList data_list={display_obj} />
+                    <TimeList display_obj={display_obj} />
                 </View> ) : (<View></View>)
             }
             
