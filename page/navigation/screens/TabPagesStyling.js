@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
         color: 'white',
         marginVertical: 5,
         textAlign: 'center',
+        fontSize: 15,
     },
     
     boldtext: {
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     },  
 
     flatList: {
-        marginBottom: 120,
+        marginBottom: 150,
 
     },
 
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'white',
         borderRadius: 10, 
-        padding: 12, 
+        padding: 18, 
         marginBottom: 10,
     },
 

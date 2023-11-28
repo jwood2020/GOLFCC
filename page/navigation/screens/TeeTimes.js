@@ -149,23 +149,27 @@ function TeeTimes({navigation}) {
                 {Object.keys(data_display).length > 0 &&
                 Object.keys(data_display)[0] != "undefined" ? (
                     <View style={styles.flatList}>
-                        <Text style={styles.boldtext}>
-                            {Object.keys(data_display)[0]}
-                        </Text>
                         <View style={styles.container}>
 
                             <TouchableOpacity style={styles.teeTimesButtonBox} 
-                                              onPress={handleDecrement}>
+                                                onPress={handleDecrement}>
                                 <Text style={styles.centeredText}>{'<'}</Text>
-                            </TouchableOpacity>
+                             </TouchableOpacity>
 
-                            <TimeList data_list={times_formatted} />
+                            <Text style={styles.boldtext}>
+                                {Object.keys(data_display)[0]}
+                            </Text>
 
                             <TouchableOpacity style={styles.teeTimesButtonBox} 
-                                              onPress={handleIncrement}>
+                                                onPress={handleIncrement}>
                                 <Text style={styles.centeredText}>{'>'}</Text>
                             </TouchableOpacity>
-                                
+                        </View>
+
+                        <View><Text></Text></View>
+
+                        <View style={styles.container}>
+                            <TimeList data_list={times_formatted} />
                         </View>
                     </View>
 

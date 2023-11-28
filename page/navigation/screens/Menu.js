@@ -9,7 +9,14 @@
 */
 
 import { React, useState } from "react";
-import { View, Text, Button, Image, ImageBackground, TouchableOpacity } from 'react-native';
+
+import { View, 
+         Text, 
+         Image, 
+         ImageBackground, 
+         TouchableOpacity } 
+from 'react-native';
+
 import { SelectList } from "react-native-dropdown-select-list";
 
 import background from '../../../backgroundimage.jpeg';

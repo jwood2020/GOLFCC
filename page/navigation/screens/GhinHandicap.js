@@ -9,7 +9,7 @@
 */
 
 import React from 'react';
-import { View, Text, Button, ImageBackground } from 'react-native';
+import { View, Text, ImageBackground } from 'react-native';
 import background from '../../../backgroundimage.jpeg';
 import styles from './TabPagesStyling';
 
