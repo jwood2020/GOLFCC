@@ -114,8 +114,6 @@ function TeeTimes({navigation}) {
         }
     }
 
-    
-
     const TimeList = ({ data_list }) => {
         const renderItem = ({ item, index }) => (
           <View style={styles.teeTimeBox}>

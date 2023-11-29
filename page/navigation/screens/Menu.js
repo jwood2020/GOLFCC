@@ -61,8 +61,18 @@ function Menu() {
                 require("./photos/buschlightcan.webp")
                 ), 
 
-        2: 'Content for Item 2',
-        3: 'Content for Item 3',
+        2: item(0,
+                "Content for Item 2",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        3: item(0,
+                "Content for Item 3",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
         4: item(4,
                 "Michelob Ultra:",
                 "Enjoy the crisp, clean taste of Michelob ULTRA, the " +
@@ -71,17 +81,72 @@ function Menu() {
                 require('./photos/ultra.webp')
                 ), 
 
-        5: 'Content for Item 5',
-        6: 'Content for Item 6',
-        7: 'Content for Item 7',
-        8: 'Content for Item 8',
-        9: 'Content for Item 9',
-        10: 'Content for Item 10',
-        11: 'Content for Item 11',
-        12: 'Content for Item 12',
-        13: 'Content for Item 13',
-        14: 'Content for Item 14',
-        15: 'Content for Item 15',
+        5: item(0,
+                "Content for Item 4",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        6: item(0,
+                "Content for Item 6",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        7: item(0,
+                "Content for Item 7",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        8: item(0,
+                "Content for Item 8",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        9: item(0,
+                "Content for Item 9",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        10: item(0,
+                "Content for Item 10",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        11: item(0,
+                "Content for Item 11",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        12: item(0,
+                "Content for Item 12",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        13: item(0,
+                "Content for Item 13",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        14: item(0,
+                "Content for Item 14",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        15: item(0,
+                "Content for Item 15",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
         16: item(5,
                  "High Noon:",
                  "Made with real vodka, real juice and sparkling " +
@@ -90,10 +155,29 @@ function Menu() {
                  require('./photos/highnoon.webp')
                  ), 
 
-        17: 'Content for Item 17',
-        18: 'Content for Item 18',
-        19: 'Content for Item 19',
-        20: 'Content for Item 20',
+        17: item(0,
+                "Content for Item 17",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        18: item(0,
+                "Content for Item 18",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        19: item(0,
+                "Content for Item 19",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
+
+        20: item(0,
+                "Content for Item 20",
+                "",
+                require("./photos/buschlightcan.webp")
+                ),
     };
 
     // Counts the quantity of the product the users selects.
