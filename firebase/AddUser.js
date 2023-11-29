@@ -52,7 +52,7 @@ async function AddUser(email, password, courseCode, fullName) {
         .catch(error => {
 
             console.log(error);
-            alert(error);
+            alert("An error occurred. Please check your credentials");
 
             /* Return that firebase errored */
             return 0;

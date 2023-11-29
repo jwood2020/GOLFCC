@@ -49,8 +49,14 @@ function SignupScreen() {
 
         /* Add a user, if user enters faulty data then do not take
            them to main screen. */
-        if (await AddUser(email, password, courseCode, fullName)) {
-            navigation.navigate('MainContainer')
+        if (email !== "" && password !== "" && fullName !== "" && courseCode !== "") {
+            if (await AddUser(email, password, courseCode, fullName)) {
+                navigation.navigate('MainContainer')
+            }
+        }
+
+        else {
+            alert("Please Enter a Name, an Email, a Password, and a CourseCode ");
         }
 
         return;

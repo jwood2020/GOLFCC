@@ -38,8 +38,14 @@ function LoginScreen() {
       LoginUser will run asynchronously and the if statement will 
       always evaluate to True. */
     async function handleLogin() {
-        if (await LoginUser(email, password)) {
-            navigation.navigate('MainContainer')
+        if (email !== "" && password !== "") {
+            if (await LoginUser(email, password)) {
+                navigation.navigate('MainContainer')
+            }
+        }
+
+        else {
+            alert("Please Enter an Email and a Password");
         }
     }
 
