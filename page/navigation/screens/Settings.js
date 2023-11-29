@@ -46,10 +46,13 @@ function Settings({navigation}) {
 
         let times = [];
 
-        /* Loop through all the times for that day */
-        /* NOTE: This will be unsorted */
-        for (time in userTeeTimes[day]) {
-            times.push(time);
+        if (new Date().getTime() <= new Date(day).getTime()) {
+
+            /* Loop through all the times for that day */
+            /* NOTE: This will be unsorted */
+            for (time in userTeeTimes[day]) {
+                times.push(time);
+            }
         }
 
         /* Sort those times and convert them to a more readable format */
