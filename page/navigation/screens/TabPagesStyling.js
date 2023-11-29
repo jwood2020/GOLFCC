@@ -134,13 +134,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
 
-    modal: {
-        flex: 1,  
-        paddingHorizontal: 20, 
-        paddingVertical: 50,
-        backgroundColor: 'white',
-    },
-
     view1: {
         padding: 10,
         margin: 5,
@@ -164,6 +157,39 @@ const styles = StyleSheet.create({
         width: 200, 
         height: 200, 
         resizeMode: 'contain', 
+    },
+
+    input: {
+        width: '80%',
+        height: 40,
+        borderColor: 'gray',
+        color: 'white',
+        textAlignVertical: 'center',
+        borderWidth: 1,
+        borderRadius: 5,
+        marginBottom: 10,
+        marginTop: 3,
+        paddingHorizontal: 10,
+    },
+
+    button: {
+        width: '80%',
+        height: 50,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+        borderColor: 'gray',
+        borderWidth: 1,
+        borderRadius: 5,
+        marginBottom: 10,
+        paddingHorizontal: 10,
+    },
+
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold', 
     },
 });
 
