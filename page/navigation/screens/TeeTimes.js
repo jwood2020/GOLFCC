@@ -9,7 +9,13 @@
 */
 
 import { React, useState } from 'react';
-import { View, Text, ImageBackground, FlatList, Button, TouchableOpacity } from 'react-native';
+
+import { View, 
+         Text, 
+         ImageBackground, 
+         FlatList, 
+         TouchableOpacity } 
+from 'react-native';
 
 import ReturnTeeTimes from '../../../firebase/ReturnTeeTimes';
 import CreateTeeTimes from '../../../firebase/CreateTeeTimes';
@@ -83,33 +89,32 @@ function TeeTimes({navigation}) {
        returns what we want inside an array, which is why we reference it
        at [0]. */
     if (Object.values(data_display)[0] !== undefined) {
-        times = Object.keys(Object.values(data_display)[0]).sort();
+        let temp_times = Object.keys(Object.values(data_display)[0]).sort();
 
         /* Next we will convert each time to a form more readable to the 
            user. */
-        times_formatted = convertTime(times);
+        let temp_times_formatted = convertTime(temp_times);
         let key = display_day_obj[day_offset];
 
-        for (let i in times) {
+        for (let i in temp_times) {
 
-            let num_players = data_display[key][times[i]];
+            let num_players = data_display[key][temp_times[i]];
 
+            /* Only display tee times that are available */
             if (num_players !== 0) {
 
-                /* Display the number of available spots */
-                times_formatted[i] = times_formatted[i] 
-                                        + " (" + num_players + ")";
+                /* Display the number of available spots to the user */
+                times_formatted.push(temp_times_formatted[i] 
+                    + " (" + num_players + ")");
+                
+                /* Also add the corresponding database time at the same */
+                /* index as the corresponding time displayed to the user */
+                times.push(temp_times[i]);
             }
-
-            /* If the tee time is not available, then don't display it */
-            else {
-                times_formatted.delete(i);
-                times.delete(i);
-            }
-
-            
         }
     }
+
+    
 
     const TimeList = ({ data_list }) => {
         const renderItem = ({ item, index }) => (
