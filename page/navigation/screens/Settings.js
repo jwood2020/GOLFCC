@@ -46,7 +46,10 @@ function Settings({navigation}) {
 
         let times = [];
 
-        if (new Date().getTime() <= new Date(day).getTime()) {
+        /* YYYY-MM-DD date format */
+        var today = new Date().toISOString().substring(0,10);
+
+        if (new Date(today).getTime() <= new Date(day).getTime()) {
 
             /* Loop through all the times for that day */
             /* NOTE: This will be unsorted */
