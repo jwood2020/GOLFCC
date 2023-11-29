@@ -26,9 +26,9 @@ function ReturnUserTeeTimes() {
     const db = getDatabase();
     const data_ref = ref(db, "/TeeTimes");
 
-    /* useEffect will prevent the onValue function from rerendering the function, */
-    /* meaning it will only run once. Inside the useEffect we will read the */
-    /* database information from the TeeTimes key. */
+    /* useEffect will prevent the onValue function from rerendering the */
+    /* function, meaning it will only run once. Inside the useEffect we */
+    /* will read the database information from the TeeTimes key. */
     useEffect(() => {
         return onValue(data_ref, querySnapShot => {
             let data = querySnapShot.val() || {};
@@ -39,19 +39,28 @@ function ReturnUserTeeTimes() {
 
     user_teeTimes = {}
 
+    /* These four for loops loop through all of the players within each */
+    /* tee time */
     for (id in db_data) {
         for (day in db_data[id]) {
             for (time in db_data[id][day]) {
                 for (player in db_data[id][day][time]) {
-                    if (db_data[id][day][time][player]['created_by'] === auth_uid) {
-                        console.log("inside if");
+                    if (db_data[id][day][time][player]['created_by'] === 
+                        auth_uid) 
+                    {
+
+                        /* This if and the if below it fix an error caused */
+                        /* by referencing an object that doesn't exist */
                         if (user_teeTimes[day] === undefined) {
                             user_teeTimes[day] = {};
                         }
+
                         if (user_teeTimes[day][time] === undefined) {
                             user_teeTimes[day][time] = {};
                         }
-                        user_teeTimes[day][time][player] = db_data[id][day][time][player];
+
+                        user_teeTimes[day][time][player] = 
+                            db_data[id][day][time][player];
                     }
                 }
             }

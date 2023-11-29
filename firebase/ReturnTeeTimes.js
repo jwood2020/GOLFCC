@@ -21,12 +21,12 @@ import { useState, useEffect } from 'react';
 
 /* We will have tee times available from 8 am to 5 pm 
    with 10 minute increments. We will display records 
-   for 2 weeks, so records will be created two weeks in
-   advanced and will not be visible to the user whenever 
+   for 1 week, so records will be created one week in
+   advance and will not be visible to the user whenever 
    they are in the past. */
 
 /* This means we will have 55 records for 1 day
-   and 770 total records for the two weeks that will be 
+   and 385 total records for the one week that will be 
    displayed */
 
 function ReturnTeeTimes() {
@@ -37,9 +37,9 @@ function ReturnTeeTimes() {
    const db = getDatabase();
    const data_ref = ref(db, "/TeeTimes");
 
-   /* useEffect will prevent the onValue function from rerendering the function, */
-   /* meaning it will only run once. Inside the useEffect we will read the */
-   /* database information from the TeeTimes key. */
+   /* useEffect will prevent the onValue function from rerendering the */
+   /* function, meaning it will only run once. Inside the useEffect we */
+   /* will read the database information from the TeeTimes key. */
    useEffect(() => {
       return onValue(data_ref, querySnapShot => {
          let data = querySnapShot.val() || {};
@@ -48,10 +48,10 @@ function ReturnTeeTimes() {
       });
    }, []);
 
-   /* teeTimes object to store all the data for the two weeks we will display */
+   /* teeTimes object to store all the data for the one week we will display */
    var teeTimes = {}
 
-   /* Loop through each day for two weeks */
+   /* Loop through each day for one week */
    for (let i = 0; i < 7; i++) {
 
       /* Create a new date type for the ith day from today */
