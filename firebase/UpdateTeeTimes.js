@@ -92,17 +92,13 @@ async function UpdateTeeTimes(data_day,data_time,Player1,Player2,Player3,Player4
         /* Add the players to our update object */
         /* Start adding users at the first empty position available in the */
         /* update object. */
-        for (let obj_index = 4 - num_empty_data; obj_index < 4; obj_index++) {
-
-            /* The players are referenced 1-4 instead of 0-3, so add 1 */
-            let player = "Player" + (obj_index + 1).toString();
-
-            if (player_arr[array_index] !== "") {
+        for (player in update_obj) {
+            if (update_obj[player] === "" && player_arr[array_index] !== "") {
                 update_obj[player] = {created_by: auth_uid,
                                       player: player_arr[array_index]};
-            }
 
-            array_index += 1;
+                array_index += 1;
+            }
         }
 
         /* Build the reference to the database that we need to update */
