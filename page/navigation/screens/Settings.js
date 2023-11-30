@@ -81,13 +81,25 @@ function Settings({navigation}) {
     /* Object containing all the Tee Times data created by the user */
     const userTeeTimes = ReturnUserTeeTimes();
 
+    /* Array containing all the days */
+    let day_obj = [];
+
+    /* Loop through all the times for that day */
+    /* NOTE: This will be unsorted */
+    for (day in userTeeTimes) {
+        day_obj.push(day);
+    }
+
+    day_obj.sort();
+
     /* Array containing the data we will display to the user */
     /* Each element of the array will be a tee time entry */
     let display_obj = [];
 
     /* loop through all the days in the data */
-    for (day in userTeeTimes) {
+    for (day_index in day_obj) {
 
+        let day = day_obj[day_index];
         let times = [];
 
         /* YYYY-MM-DD date format */
