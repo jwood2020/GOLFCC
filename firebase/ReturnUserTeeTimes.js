@@ -49,14 +49,10 @@ function ReturnUserTeeTimes() {
                         auth_uid) 
                     {
 
-                        /* This if and the if below it fix an error caused */
+                        /* This if statement fixed an error caused */
                         /* by referencing an object that doesn't exist */
                         if (user_teeTimes[day] === undefined) {
                             user_teeTimes[day] = {};
-                        }
-
-                        if (user_teeTimes[day][time] === undefined) {
-                            user_teeTimes[day][time] = {};
                         }
 
                         user_teeTimes[day][time] = db_data[id][day][time];
