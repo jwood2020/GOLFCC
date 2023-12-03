@@ -9,7 +9,16 @@
 */
 
 import { React, useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, ImageBackground } from 'react-native';
+
+import { View, 
+         Text, 
+         TouchableOpacity, 
+         TextInput, 
+         ImageBackground, 
+         ScrollView, 
+         KeyboardAvoidingView, } 
+from 'react-native';
+
 import UpdateTeeTimes from '../../../firebase/UpdateTeeTimes';
 import background from '../../../backgroundimage.jpeg';
 import styles from './TabPagesStyling';
@@ -36,99 +45,117 @@ function BookTeeTime({route, navigation}) {
     const num_players = time.substring(time.length - 2, time.length - 1);
 
     return (
-        <View style={styles.viewContainer}>
-             <ImageBackground
+
+        <View style={styles.root}>
+            <ImageBackground
               style={styles.mainContainer}
               imageStyle={styles.backgroundImage}
               source={background}
             >
-            <View>
-                <View style={styles.container}>
-                    <Text style={styles.headingText}>Book Tee Time</Text>
-                    <View style={styles.rightAlignText}>
+        
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                    style={styles.container}
+                >
+                    <ScrollView styles={styles.root}>
+             
+                        <View style={styles.container}>
 
-                        <Text style={styles.logoutText} 
-                            onPress= {() => navigateBack()}>
-                            Close
-                        </Text> 
+                            <Text style={styles.headingText}>
+                                Book Tee Time
+                            </Text>
 
-                    </View>
+                            <View style={styles.rightAlignText}>
+
+                                <Text style={styles.logoutText} 
+                                    onPress= {() => navigateBack()}>
+                                    Close
+                                </Text> 
+
+                            </View>
+                            
+                        </View>
+                        
+
+                        <View style={styles.divider} />
                     
-                </View>
-                
+                        <Text style={styles.bodyText}>
+                            Golf Course: Fox Run Golf Club 
+                        </Text>
+                        <Text style={styles.bodyText}>
+                            Date: {day} 
+                        </Text>
+                        <Text style={styles.bodyText}>
+                            Time: {time.substring(0, time.length - 4)} 
+                        </Text>
 
-                <View style={styles.divider} />
-            
-                <Text style={styles.bodyText}>
-                    Golf Course: Fox Run Golf Club 
-                </Text>
-                <Text style={styles.bodyText}>
-                    Date: {day} 
-                </Text>
-                <Text style={styles.bodyText}>
-                    Time: {time.substring(0, time.length - 4)} 
-                </Text>
+                        <Text></Text>
 
-                <Text></Text>
+                        <Text style={styles.bodyText}>
+                            Players (Enter up to {num_players})
+                        </Text>
 
-                <Text style={styles.bodyText}>
-                    Players (Enter up to {num_players})
-                </Text>
+                        <Text></Text>
 
-                <Text></Text>
+                        <View>
+                            <Text style={styles.bodyText}>Player 1: </Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Enter Player Name"
+                                placeholderTextColor={'white'}
+                                onChangeText={(text) => setPlayer1(text)}
+                            /> 
+                        </View>
 
-                <View>
-                    <Text style={styles.bodyText}>Player 1: </Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Enter Player Name"
-                        placeholderTextColor={'white'}
-                        onChangeText={(text) => setPlayer1(text)}
-                    /> 
-                </View>
+                        {Number(num_players) > 1 ? (
+                            <View>
+                                <Text style={styles.bodyText}>Player 2: </Text>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Enter Player Name"
+                                    placeholderTextColor={'white'}
+                                    onChangeText={(text) => setPlayer2(text)}
+                                /> 
+                            </View> ) : (<View></View>)
+                        }
 
-                {Number(num_players) > 1 ? (
-                    <View>
-                        <Text style={styles.bodyText}>Player 2: </Text>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Enter Player Name"
-                            placeholderTextColor={'white'}
-                            onChangeText={(text) => setPlayer2(text)}
-                        /> 
-                    </View> ) : (<View></View>)
-                }
+                        {Number(num_players) > 2 ? (
+                            <View>
+                                <Text style={styles.bodyText}>Player 3: </Text>
+                                <TextInput 
+                                    style={styles.input}
+                                    placeholder="Enter Player Name"
+                                    placeholderTextColor={'white'}
+                                    onChangeText={(text) => setPlayer3(text)}
+                                /> 
+                            </View> ) : (<View></View>)
+                        }
 
-                {Number(num_players) > 2 ? (
-                    <View>
-                        <Text style={styles.bodyText}>Player 3: </Text>
-                        <TextInput 
-                            style={styles.input}
-                            placeholder="Enter Player Name"
-                            placeholderTextColor={'white'}
-                            onChangeText={(text) => setPlayer3(text)}
-                        /> 
-                    </View> ) : (<View></View>)
-                }
+                        {Number(num_players) > 3 ? (
+                            <View>
+                                <Text style={styles.bodyText}>Player 4: </Text>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Enter Player Name"
+                                    placeholderTextColor={'white'}
+                                    onChangeText={(text) => setPlayer4(text)}
+                                /> 
+                            </View> ) : (<View></View>)
+                        }
 
-                {Number(num_players) > 3 ? (
-                    <View>
-                        <Text style={styles.bodyText}>Player 4: </Text>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Enter Player Name"
-                            placeholderTextColor={'white'}
-                            onChangeText={(text) => setPlayer4(text)}
-                        /> 
-                    </View> ) : (<View></View>)
-                }
-
-                <TouchableOpacity style={styles.button} onPress={bookTeeTime}>
-                    <Text style={styles.buttonText}>Book Tee Time</Text>
-                </TouchableOpacity>
-            </View>
+                        <TouchableOpacity 
+                            style={styles.button} 
+                            onPress={bookTeeTime}
+                        >
+                            <Text style={styles.buttonText}>
+                                Book Tee Time
+                            </Text>
+                        </TouchableOpacity>
+                    </ScrollView>
+                </KeyboardAvoidingView>
             </ImageBackground>
         </View>
+        
     );
 }
 

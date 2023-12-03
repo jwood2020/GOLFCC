@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
 
     button: {
         width: '80%',
-        height: 50,
+        height: 47,
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
