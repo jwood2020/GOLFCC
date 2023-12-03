@@ -59,8 +59,7 @@ function ReturnUserTeeTimes() {
                             user_teeTimes[day][time] = {};
                         }
 
-                        user_teeTimes[day][time][player] = 
-                            db_data[id][day][time][player];
+                        user_teeTimes[day][time] = db_data[id][day][time];
                     }
                 }
             }

@@ -125,15 +125,23 @@ function Settings({navigation}) {
             /* first. temp_obj will be an array with all the information */
             /* per tee time entry */
             let temp_obj = [];
-            temp_obj.push(convertDate([day])[0]);
-            temp_obj.push(times_formatted[index]);
 
             /* Add all the players associated with this tee time */
             for (player in userTeeTimes[day][times[index]]) {
-                temp_obj.push(
-                    userTeeTimes[day][times[index]][player]['player']
-                );
+
+                if (userTeeTimes[day][times[index]][player] !== "") {
+                    temp_obj.push(
+                        userTeeTimes[day][times[index]][player]['player']
+                    );
+                }
             }
+
+            /* Sort so that the names are always in a consistent order */
+            temp_obj.sort();
+
+            /* Then add the date and the time to the beginning of the array */
+            temp_obj.unshift(times_formatted[index])
+            temp_obj.unshift(convertDate([day])[0])
 
             /* Add this tee time entry to the list of all tee time entries */
             display_obj.push(temp_obj);
