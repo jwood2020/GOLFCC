@@ -200,7 +200,7 @@ function Menu() {
     
       // Decrement the quantity by 1 when the button is pressed.
       function handleDecrement() {
-        if (quantity > 0) {
+        if (quantity > 1) {
           setPrice((quantity - 1) *  price_factor);
           setQuantity(quantity - 1);
         }
